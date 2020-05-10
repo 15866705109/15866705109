@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="1" failures="0" hostname="dengyingdeMacBook-Pro.local" name="pytest" skipped="0" tests="1" time="0.345" timestamp="2020-05-07T10:05:34.586005"><testcase classname="" file="testcase/test_api.py" name="testcase.test_api" time="0.000"><error message="collection failure">testcase/test_api.py:7: in &lt;module&gt;
+    class Test_api:
+testcase/test_api.py:9: in Test_api
+    data = BaseApi.yaml_load(&quot;../testcase/test_api_data.yaml&quot;)
+api/base_api.py:26: in yaml_load
+    with open(path) as f:
+E   FileNotFoundError: [Errno 2] No such file or directory: &apos;../testcase/test_api_data.yaml&apos;</error></testcase></testsuite></testsuites>

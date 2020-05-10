@@ -1,0 +1,185 @@
+merchant_host:
+  url: http://backend.paas-merchant.env
+
+test_consultation_orders:
+  method: get
+  url: /api/consultation_counsel/consultation_orders
+  params:
+    year: ${year}
+    month: ${month}
+    page: ${page}
+  data: {}
+  json: {}
+
+
+consultation_order_list:
+  method: get
+  url: /api/consultation_counsel/consultation_order_list
+  params: {"page": 1,
+            }
+  data: {}
+  json: {}
+
+
+login:
+  method: post
+  url: /api/accounts/login/password
+  params: {}
+  headers: {
+             "User-Agent": com.wanmeizhensuo.zhensuo/7.25.2 AsyncHttpClient/1.4.5 Android/9
+  }
+  json: {}
+  data: {
+    "lat": 40.00200491621516,
+    "lng": 116.4873794175263,
+    "phone": 18610813004,
+    "password": 123456,
+    "face_token": ""
+  }
+
+consultation_order_detail:
+  method: get
+  url: /api/consultation_counsel/consultation_order_detail
+  params: {"order_no": 1120042156921205,
+           "record_id": c7c302d483c411ea8ad9eeedce70eebe
+            }
+  data: {}
+  json: {}
+
+order_payment:
+  method: post
+  url: /api/consultation_counsel/order_payment
+  data: {
+    "order_no": 1120042399838646,
+    "channel": alipay,
+    "payment_amount": 5000,
+  }
+  json: {}
+  params: {}
+
+prepare_one2one:
+  method: post
+  url: /api/consultation_counsel/prepare_one2one
+  data: {
+          "user_gender": 2,
+          "user_age": 24,
+          "user_has_aesthetic_medicine": 1,
+          "counsellor_id": 0783bb9f454a41efa03fd1564df3e957,
+          "referer": conversation_detail,
+          "counsellor_type": 1,
+          "service_fee": 0,
+          "service_mode": 0,
+          "user_target_project":"[0]",
+  }
+  json: {}
+  params: {}
+
+
+order_cancel:
+  method: post
+  url: /api/consultation_counsel/order_cancel
+  data: {
+          "order_no": 1120042399838646
+  }
+  json: {}
+  params: {}
+
+launch_dispatch:
+  method: post
+  url: /api/consultation_counsel/launch_dispatch
+  data: {
+    "trace_id": 5acf50b77ede99f39e054c600e840800,
+    "order_no": 1120050957383786,
+    "counsellor_type": 1,
+    "use_last_data": 0,
+    "user_age": 23,
+    "user_gender": 1,
+    "user_has_aesthetic_medicine": 0,
+    "user_target_project": "[0]",
+  }
+
+
+
+order_payment_status:
+  method: get
+  url: /api/consultation_counsel/order_payment_status
+  data: {
+          "order_no": 1120042399838646
+  }
+  json: {}
+  params: {}
+
+order_info:
+  method: get
+  url: /api/consultation_counsel/order_info
+  data: {
+          "order_no": 1120042399838646
+  }
+  json: {}
+  params: {}
+
+order_check:
+  method: post
+  url: /api/consultation_counsel/order_check
+  data: {
+           "order_no": 1120042399838646
+  }
+  json: {}
+  params: {}
+
+launch_one2one:
+  method: post
+  url: /api/consultation_counsel/launch_one2one
+  data:
+    "order_no": 1120042399838646,
+    "trace_id": ${trace_id}
+    "consultation_type": 1,
+    "counsellor_id": 0783bb9f454a41efa03fd1564df3e957,
+    "counsellor_type": 1,
+    "referer": video_face_consultation,
+    "service_fee": 0,
+    "service_mode": 0,
+    "user_age": 26,
+    "user_gender": 1,
+    "user_has_aesthetic_medicine": 0,
+    "user_target_project": "[0,5]"
+
+
+
+cancel_dispatch:
+  url: /api/consultation_counsel/cancel_dispatch
+  method: post
+
+
+
+
+
+home:
+  url: /api/consultation_counsel/workbench/home
+  method: get
+
+current_dispatch_task_list:
+  url: /api/consultation_counsel/workbench/current_dispatch_task_list
+  method: get
+
+current_dispatch_task_count:
+  url: /api/consultation_counsel/workbench/current_dispatch_task_count
+  method: get
+
+reports:
+  url: /api/consultation_counsel/reports
+  method: get
+  params:
+    "page_num": 1
+    "page_size": 10
+    "report_status_type": 1
+    "report_time_type": 0
+    "counsellor_id": 0783bb9f454a41efa03fd1564df3e957
+    "record_type": 0
+    "device_id": 65691A76-079E-45A9-81BB-2740D8E28A9E
+    "version": 7.26.0
+
+
+get_current_dispatch_info:
+  method: get
+  url: /api/consultation_counsel/get_current_dispatch_info

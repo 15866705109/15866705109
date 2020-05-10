@@ -1,0 +1,2 @@
+merchant_host:
+  url: http://backend.paas-merchant.env
