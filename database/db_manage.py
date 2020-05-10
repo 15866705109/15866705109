@@ -5,12 +5,13 @@
 import pymysql
 from pymysql import OperationalError
 
+from gm.api import path_setting
 from gm.api.base_api import BaseApi
 
 
 class DB:
     def __init__(self):
-        self.data = BaseApi().api_load("../api/config.yaml")
+        self.data = BaseApi().api_load(path_setting.CONFIGYAML_CONFIG)
         print(self.data)
 
     # 连接数据库
