@@ -49,8 +49,11 @@ class BaseApi:
             json=req['json']
         )
         item = r.cookies.values()
+        print("---------",item)
+
         if len(item) == 1:
             headers = '_gtid={}'.format(item[0])
+            print("cookie异常")
 
         else:
             headers = '_gtid={};sessionid={}'.format(item[0], item[1])
