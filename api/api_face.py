@@ -1,8 +1,8 @@
 '''
 封装所有接口请求
 '''
-from gm.api import path_setting
-from gm.api.base_api import BaseApi
+from face_api_test.api import path_setting
+from face_api_test.api.base_api import BaseApi
 
 
 class Testapi(BaseApi):
@@ -131,7 +131,7 @@ class Testapi(BaseApi):
     视频面诊工作台-首页
     '''
     def home(self):
-        print("home调用",type(self.api_send(self.data["home"])))
+
         return self.api_send(self.data["home"])
     '''
     视频面诊工作台 - 待抢面诊派单 

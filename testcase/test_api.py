@@ -1,7 +1,7 @@
 import pytest
-import os
-from gm.api.api_face import Testapi
-from gm.api.base_api import BaseApi
+
+from face_api_test.api.api_face import Testapi
+
 
 
 class Test_api:
@@ -13,7 +13,7 @@ class Test_api:
 
     @pytest.mark.parametrize("year, month, page", [("2020","04","1"),("2020","03","1"),("2020","02","1")])
     def test_consultation_orders(self, year, month, page):
-        r = Testapi().test_consultation_orders(year, month, page)
+        r = Testapi().consultation_orders(year, month, page)
         assert r["error"] == 0
 
 
