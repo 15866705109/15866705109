@@ -3,19 +3,16 @@ import pytest
 from face_api_test.api.api_face import Testapi
 
 
-
 class Test_api:
 
     @classmethod
     def setup_class(cls):
         cls.login = Testapi().login()
 
-
-    @pytest.mark.parametrize("year, month, page", [("2020","04","1"),("2020","03","1"),("2020","02","1")])
+    @pytest.mark.parametrize("year, month, page", [("2020", "04", "1"), ("2020", "03", "1"), ("2020", "02", "1")])
     def test_consultation_orders(self, year, month, page):
         r = Testapi().consultation_orders(year, month, page)
         assert r["error"] == 0
-
 
     def test_prepare_one2one(self):
         r = Testapi().prepare_one2one()
@@ -24,7 +21,8 @@ class Test_api:
     def test_order_check(self):
         r = Testapi().order_check()
         print(r)
-    @pytest.mark.parametrize("trace_id",["7a70dbb478752337face88f50485f393",])
+
+    @pytest.mark.parametrize("trace_id", ["7a70dbb478752337face88f50485f393", ])
     def test_launch_one2one(self, trace_id):
         r = Testapi().launch_one2one(trace_id)
         print(r)
@@ -41,9 +39,7 @@ class Test_api:
         r = Testapi().order_payment()
         print(r)
 
-    def test_prepare_one2one(self):
-        r = Testapi().prepare_one2one()
-        print(r)
+
 
     def test_order_cancel(self):
         r = Testapi().order_cancel()
@@ -65,14 +61,16 @@ class Test_api:
         r = Testapi().cancel_dispatch()
         print(r)
 
-    #todo:需要确认怎么获取有效抢单
+    # todo:需要确认怎么获取有效抢单
     def test_get_current_dispatch_info(self):
         r = Testapi().get_current_dispatch_info()
         print(r)
+
     def test_launch_dispatch(self):
         r = Testapi().launch_dispatch()
         print(r)
-    #todo；感觉没必要写
+
+    # todo；感觉没必要写
     def test_current_dispatch_task_list(self):
         r = Testapi().current_dispatch_task_list()
         print(r)
@@ -80,7 +78,8 @@ class Test_api:
     def test_current_dispatch_task_count(self):
         r = Testapi().current_dispatch_task_count()
         print(r)
-    #todo:需要调用开启和关闭面诊断言信息
+
+    # todo:需要调用开启和关闭面诊断言信息
     def test_home(self):
         r = Testapi().home()
         print(r)

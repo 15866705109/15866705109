@@ -1,6 +1,13 @@
-ddoctor:
+consult:
   host: bj-cdb-8fjm4voq.sql.tencentcdb.com
   port: 62106
   user: work
   password: Gengmei1
   db: diagnosis
+
+merchant:
+  host: bj-cdb-8fjm4voq.sql.tencentcdb.com
+  port: 62106
+  user: work
+  password: Gengmei1
+  db: diagnosis2

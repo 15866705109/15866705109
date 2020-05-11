@@ -11,13 +11,17 @@ from face_api_test.api.base_api import BaseApi
 
 class DB:
     def __init__(self):
+        self.host = BaseApi().api_load(path_setting.HOSTYAML_CONFIG)
         self.data = BaseApi().api_load(path_setting.CONFIGYAML_CONFIG)
-        print(self.data)
+        print(self.host)
 
     # 连接数据库
     def get_conn(self):
         try:
-            conn = pymysql.connect(**self.data["ddoctor"])
+            if self.host["merchant_host"]["url"] == "http://backend.paas-consult.env":
+                conn = pymysql.connect(**self.data["consult"])
+            else:
+                conn = pymysql.connect(**self.data["merchant"])
             return conn
         except OperationalError as e:
             print("Mysql Error %d: %s" % (e.args[0], e.args[1]))
