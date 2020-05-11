@@ -5,8 +5,8 @@
 import pymysql
 from pymysql import OperationalError
 
-from gm.api import path_setting
-from gm.api.base_api import BaseApi
+from face_api_test.api import path_setting
+from face_api_test.api.base_api import BaseApi
 
 
 class DB:

@@ -1,7 +1,7 @@
 import pytest
-import os
-from gm.api.api_face import Testapi
-from gm.api.base_api import BaseApi
+
+from face_api_test.api.api_face import Testapi
+
 
 
 class Test_api:

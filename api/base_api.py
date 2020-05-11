@@ -9,9 +9,9 @@ import requests
 import yaml
 
 
-# from gm.api.api_face import Testapi
-# from gm.api.base_api import Testapi
-from gm.api import path_setting
+# from face_api_test.api.api_face import Testapi
+# from face_api_test.api.base_api import Testapi
+from face_api_test.api import path_setting
 
 
 class BaseApi:
@@ -20,7 +20,6 @@ class BaseApi:
     @classmethod
     def format(cls, r):
         cls.r = r
-        # print(json.dumps(r.json(), indent=2))
         print(json.dumps(json.loads(r.text), indent=2, ensure_ascii=False))
 
     # 封装yaml文件读取
@@ -33,10 +32,7 @@ class BaseApi:
     def api_load(self, path):
         return self.yaml_load(path)
 
-    # @classmethod
-    # def api_host(cls, path):
-    #     host = cls.api_load(path)
-    #     return host
+
 
     def get_cookie(self, req: dict):
         host = self.api_load(path_setting.HOSTYAML_CONFIG)
@@ -49,7 +45,6 @@ class BaseApi:
             json=req['json']
         )
         item = r.cookies.values()
-        print("---------",item)
 
         if len(item) == 1:
             headers = '_gtid={}'.format(item[0])
@@ -83,7 +78,7 @@ class BaseApi:
             data=req.get('data'),
             json=req.get('json')
         )
-        print("api_send", type(r))
+
         return r.json()
 
 
