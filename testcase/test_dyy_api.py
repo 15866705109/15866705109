@@ -1,18 +1,25 @@
 import pytest
+import self as self
 
+from face_api_test.api import path_setting
 from face_api_test.api.api_face import Testapi
+from face_api_test.api.base_api import BaseApi
 
 
 class Test_api:
+
+    data = BaseApi().api_load(path_setting.TEST_API_DATA)
 
     @classmethod
     def setup_class(cls):
         cls.login = Testapi().login()
 
-    @pytest.mark.parametrize("year, month, page", [("2020", "04", "1"), ("2020", "03", "1"), ("2020", "02", "1")])
-    def test_consultation_orders(self, year, month, page):
-        r = Testapi().consultation_orders(year, month, page)
-        assert r["error"] == 0
+
+    @pytest.mark.parametrize("param", data['consultation_orders'])
+    def test_consultation_orders(self, param):
+        r = Testapi().consultation_orders(param["year"], param["month"], param["page"])
+        print(r)
+        assert r["error"] == param["asser"]
 
     def test_prepare_one2one(self):
         r = Testapi().prepare_one2one()
@@ -38,8 +45,6 @@ class Test_api:
     def test_order_payment(self):
         r = Testapi().order_payment()
         print(r)
-
-
 
     def test_order_cancel(self):
         r = Testapi().order_cancel()
@@ -87,3 +92,5 @@ class Test_api:
     def test_reports(self):
         r = Testapi().reports()
         print(r)
+if __name__ == '__main__':
+    pass
