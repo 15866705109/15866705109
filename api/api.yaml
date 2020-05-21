@@ -181,3 +181,86 @@ reports:
 get_current_dispatch_info:
   method: get
   url: /api/consultation_counsel/get_current_dispatch_info
+
+
+recommend_counsellors:
+  method: get
+  url: /api/consultation_counsel/recommend_counsellors
+  data: {}
+  json: {}
+  params: {'version':7.26.3}
+
+counsellors:
+  method: get
+  url: /api/consultation_counsel/counsellors
+  data: {}
+  json: {}
+  params: {'tab_id':1,
+           'page':1,
+           'version':7.26.3}
+
+block_info:
+  method: get
+  url: /api/consultation_counsel/block_info
+  params: {}
+  json: {}
+  data: {}
+
+
+customer:
+  method: get
+  url: /api/consultation_counsel/customer
+  params: {}
+  json: {}
+  data: {}
+
+
+consultation_apply_form_info:
+  method: get
+  url: /api/consultation_counsel/consultation_apply_form_info
+  params: {
+           'doctor_id':'liuchunjun',
+           'counsellor_id':'0505a26e42074dd081ca3528299bd18a',
+           'record_type':'1'}
+  json: {}
+  data: {}
+
+
+start_consultation:
+  method: post
+  url: /api/consultation_counsel/workbench/start_consultation
+  params: {}
+  json: {}
+  data: {}
+
+stop_consultation:
+  method: post
+  url: /api/consultation_counsel/workbench/stop_consultation
+  params: {}
+  json: {}
+  data: {}
+
+
+
+finished_dispatch_task_list:
+  method: get
+  url: /api/consultation_counsel/workbench/finished_dispatch_task_list
+  params: {}
+  json: {}
+  data: {}
+
+join_dispatch:
+  method: post
+  url: /api/consultation_counsel/workbench/join_dispatch
+  data: {'dispatch_task_id':cc3f4b74900d11eab13fb2a288b9f1c3}
+  json: {}
+  params: {}
+
+evaluate:
+  method: post
+  url: /api/consultation_counsel
+  data: {
+          "diagnosis_id":"845392f6901311eaa1d3cae9f517ce6a",
+          "star":"5"}
+  json: {}
+  params: {}
