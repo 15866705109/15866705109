@@ -14,3 +14,6 @@ HOSTYAML_CONFIG = os.path.join(BASE_DIR, "api", "host.yaml")
 
 # cookie
 GET_COOKIE = os.path.join(BASE_DIR, "api", "get_cookie.txt")
+
+# test_dyy_data.yaml
+TEST_API_DATA = os.path.join(BASE_DIR, "testcase", "test_dyy_data.yaml")

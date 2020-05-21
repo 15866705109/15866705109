@@ -155,9 +155,70 @@ class Testapi(BaseApi):
 
 
 
+    '''
+    推荐位视频面诊频道推荐面诊顾问
+    '''
+    def recommend_counsellors(self):
+        return self.api_send(self.data['recommend_counsellors'])
+
+
+    '''
+    feed流视频面诊频道tab 面诊顾问列表
+    '''
+    def counsellors(self):
+        return self.api_send(self.data['counsellors'])
+    '''
+    请求卡片：查看封禁信息
+    '''
+    def block_info(self):
+        return self.api_send(self.data['block_info'])
+
+
+    '''
+    请求卡片：判断是否新用户，获取消费者信息
+    '''
+    def customer(self):
+        return self.api_send(self.data['customer'])
+
+
+
+    '''
+    请求卡片：面诊师表单获取上一次信息接口
+    '''
+
+    def consultation_apply_form_info(self):
+        return self.api_send(self.data["consultation_apply_form_info"])
+
+    '''
+    视频面诊工作台-开启面诊操作 
+    '''
+    def start_consultation(self):
+        return self.api_send(self.data['start_consultation'])
+
+    '''
+    视频面诊工作台-停止面诊操作 
+    '''
+    def stop_consultation(self):
+        return self.api_send(self.data['stop_consultation'])
+
+    '''
+    视频面诊工作台-已抢面诊派单列表
+    '''
+    def finished_dispatch_task_list(self):
+        return self.api_send(self.data['finished_dispatch_task_list'])
+
+    '''
+    视频面诊工作台-面诊师抢派单，参数有问题待修复
+    '''
+    def join_dispatch(self):
+        return self.api_send(self.data['join_dispatch'])
+
+
+
 
 if __name__ == '__main__':
-    Testapi()
+    # Testapi().finished_dispatch_task_list()
+    Testapi().start_consultation()
     # Testapi().test_consultation_orders("2020", "04", "1")
     # Testapi().consultation_order_list()
     # Testapi().consultation_order_detail()
