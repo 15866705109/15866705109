@@ -21,19 +21,26 @@ class Testapi(BaseApi):
         self.params["month"] = month
         self.params["page"] = page
         return self.api_send(self.data["test_consultation_orders"])
+    '''
+    通过此接口获取登录用户的counselor_id
+    '''
+    def personal_center(self):
+        r = self.api_send(self.data["personal_center"])
+        url = r["data"]["icon"]["data"][0]["url"]
+        counseller_id = url.split("=")[-1]
+        print(counseller_id)
+        return counseller_id
 
-    '''
-    视频面诊1V1发起接口
-    '''
 
     def login(self):
         r = self.get_cookie(self.data["login"])
         with open(path_setting.GET_COOKIE, 'w+') as f:
             f.write(str(r))
 
-        # cookies = c.cookies()
-        # print(cookies)
 
+    '''
+    视频面诊1V1发起接口
+    '''
     def prepare_one2one(self):
         return self.api_send(self.data["prepare_one2one"])
 
@@ -218,7 +225,7 @@ class Testapi(BaseApi):
 
 if __name__ == '__main__':
     # Testapi().finished_dispatch_task_list()
-    Testapi().start_consultation()
+    Testapi().personal_center()
     # Testapi().test_consultation_orders("2020", "04", "1")
     # Testapi().consultation_order_list()
     # Testapi().consultation_order_detail()

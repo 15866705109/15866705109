@@ -4,6 +4,8 @@ consult:
   user: work
   password: Gengmei1
   db: diagnosis
+  charset: utf8
+  cursorclass: pymysql.cursors.DictCursor
 
 merchant:
   host: bj-cdb-8fjm4voq.sql.tencentcdb.com
@@ -11,3 +13,5 @@ merchant:
   user: work
   password: Gengmei1
   db: diagnosis2
+  charset: utf8
+  cursorclass: pymysql.cursors.DictCursor

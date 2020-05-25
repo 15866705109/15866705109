@@ -9,6 +9,12 @@ test_consultation_orders:
   data: {}
   json: {}
 
+personal_center:
+  method: get
+  url: /api/user/personal_center
+  params:
+    version: 7.26.3
+
 
 consultation_order_list:
   method: get
@@ -24,13 +30,13 @@ login:
   url: /api/accounts/login/password
   params: {}
   headers: {
-             "User-Agent": com.wanmeizhensuo.zhensuo/7.25.2 AsyncHttpClient/1.4.5 Android/9
+             "User-Agent": Gengmei/7.26.3 (com.wanmeizhensuo.ZhengXing; build:202005181719; iOS 13.3.0) Alamofire/4.7.0
   }
   json: {}
   data: {
     "lat": 40.00200491621516,
     "lng": 116.4873794175263,
-    "phone": 18610813004,
+    "phone": 18201438948,
     "password": 123456,
     "face_token": ""
   }
@@ -181,6 +187,8 @@ reports:
 get_current_dispatch_info:
   method: get
   url: /api/consultation_counsel/get_current_dispatch_info
+
+
 
 
 recommend_counsellors:

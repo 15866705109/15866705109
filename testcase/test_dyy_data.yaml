@@ -1,26 +1,105 @@
-"consultation_orders":
+consultation_orders_param:
   -
+    case: "正常请求参数测试202004-1"
     year: 2020
     month: 04
     page: 1
-    asser: 测试通过
+    asser: 0
   -
+    case: "正常参数测试202005-1"
     year: 2020
     month: 05
     page: 1
-    asser: 测试通过
+    asser: 0
   -
+    case: "参数正常无数据202003-1"
     year: 2020
     month: 03
     page: 1
-    asser: 测试通过
+    asser: 0
   -
+    case: "测试输入参数类型202003-str"
     year: 2020
     month: 03
     page: str
-    asser: 测试通过
+    asser: 0
   -
+    case: "测试输入参数类型2020-1-1"
     year: 2022
     month: -1
     page: 1
-    asser: 测试通过
+    asser: 0
+  -
+    case: "测试输入参数类型2020-1-1"
+    year: 2022
+    month: -1
+    page: 1
+    asser: 0
+  -
+    case: "测试输入参数类型2020-1-1"
+    year: 2022
+    month: -1
+    page: 1
+    asser: 0
+
+consultation_orders_count:
+  -
+    case: "测试总单量2020-04"
+    year: 2020
+    month: 04
+    page: 1
+
+
+  -
+    case: "测试总单量2020-05"
+    year: 2020
+    month: 05
+    page: 1
+
+  -
+    case: "测试总单量2020-03"
+    year: 2020
+    month: 03
+    page: 1
+  -
+    case: "测试总单量2020-02"
+    year: 2020
+    month: 02
+    page: 1
+
+  -
+    case: "测试总单量2020-06"
+    year: 2020
+    month: 06
+    page: 1
+
+consultation_orders_commission:
+  -
+    case: "测试总佣金2020-04"
+    year: 2020
+    month: 04
+    page: 1
+
+
+  -
+    case: "测试总佣金2020-05"
+    year: 2020
+    month: 05
+    page: 1
+
+  -
+    case: "测试总佣金2020-03"
+    year: 2020
+    month: 03
+    page: 1
+  -
+    case: "测试总佣金2020-02"
+    year: 2020
+    month: 02
+    page: 1
+
+  -
+    case: "测试总佣金2020-06"
+    year: 2020
+    month: 06
+    page: 1
