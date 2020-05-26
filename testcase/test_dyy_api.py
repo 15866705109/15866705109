@@ -1,5 +1,4 @@
 import pytest
-import self as self
 
 from face_api_test.api import path_setting
 from face_api_test.api.api_face import Testapi

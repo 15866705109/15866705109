@@ -78,8 +78,8 @@ class BaseApi:
             data=req.get('data'),
             json=req.get('json')
         )
-
         return r.json()
+
 
 
 if __name__ == '__main__':

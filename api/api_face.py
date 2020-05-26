@@ -162,6 +162,7 @@ class Testapi(BaseApi):
         return self.api_send(self.data['recommend_counsellors'])
 
 
+
     '''
     feed流视频面诊频道tab 面诊顾问列表
     '''
@@ -218,7 +219,7 @@ class Testapi(BaseApi):
 
 if __name__ == '__main__':
     # Testapi().finished_dispatch_task_list()
-    Testapi().start_consultation()
+    #Testapi().start_consultation()
     # Testapi().test_consultation_orders("2020", "04", "1")
     # Testapi().consultation_order_list()
     # Testapi().consultation_order_detail()
@@ -229,5 +230,8 @@ if __name__ == '__main__':
     # Testapi().order_info()
     # Testapi().order_check()
     # Testapi().prepare_one2one()
+
+    #Testapi().recommend_counsellors()
+    Testapi().counsellors()
 
 
