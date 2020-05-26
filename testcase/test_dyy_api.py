@@ -17,6 +17,8 @@ class Test_api:
     def setup_class(cls):
         cls.login = Testapi().login()
 
+
+
     # 测试传参有效性
     @pytest.mark.parametrize("param", orders_param_data, ids=orders_param_case)
     def test_consultation_orders_param(self, param):
@@ -42,6 +44,7 @@ class Test_api:
         a = DB().query_db(sql)
 
         assert r["data"]["order_count"] == a[0]["count"]
+
 
     # 测试订单的总佣金是否与月份一致
     @pytest.mark.parametrize("param", orders_commission_data, ids=orders_commission_case)

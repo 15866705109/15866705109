@@ -42,7 +42,8 @@ class DB:
 
     # 关闭数据库
     def close(self):
-        self.conn.close()
+        conn = self.get_conn()
+        conn.close()
 
     def getFirstAndLastDay(self, year, month):
         # 获取当前月的第一天的星期和当月总天数
