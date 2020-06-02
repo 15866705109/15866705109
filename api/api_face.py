@@ -253,7 +253,6 @@ class Testapi(BaseApi):
 
 if __name__ == '__main__':
     # Testapi().finished_dispatch_task_list()
-<<<<<<< HEAD
     # Testapi().consultation_orders("")
     # Testapi().consultation_orders("2020", "04", "1")
     # Testapi().consultation_order_list()
@@ -266,8 +265,6 @@ if __name__ == '__main__':
     # Testapi().order_check()
     # Testapi().prepare_one2one()
     Testapi().get_user_id()
-=======
-
     # # Testapi().test_consultation_orders("2020", "04", "1")
     # # Testapi().consultation_order_list()
     # # Testapi().consultation_order_detail()
@@ -280,6 +277,6 @@ if __name__ == '__main__':
     # # Testapi().prepare_one2one()
     Testapi().recommend_counsellors('7.26.3')
     # #Testapi().recommend_counsellors()
->>>>>>> yuchao_branch_face
+
 
 
