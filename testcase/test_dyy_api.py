@@ -21,10 +21,6 @@ class Test_api:
     reports_case, reports_data = get_ids(data, "reports")
     consultation_order_list_case, consultation_order_list_data = get_ids(data, "consultation_order_list")
     cancel_dispatch_case, cancel_dispatch_data = get_ids(data, "cancel_dispatch")
-    orders_param_case, orders_param_data = get_ids('consultation_orders_param')
-    orders_count_case, orders_count_data = get_ids("consultation_orders_count")
-    orders_commission_case, orders_commission_data = get_ids("consultation_orders_commission")
-
 
 
     @classmethod
