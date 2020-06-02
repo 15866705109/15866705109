@@ -1,0 +1,65 @@
+consultation_param:
+  -
+    case: '测试feed流tab全部'
+    tab_id: 0
+    page: 1
+    version: 7.26.3
+
+  -
+    case: '测试feed流tab眼部'
+    tab_id: 1
+    page: 1
+    version: 7.26.3
+#  -
+#      case: '测试feed流tab鼻部'
+#      tab_id: 2
+#      page: 1
+#      version: 7.26.3
+
+#  -
+#      case: '测试feed流tab自体脂肪'
+#      tab_id: 3
+#      page: 1
+#      version: 7.26.3
+#  -
+#      case: '测试feed流tab面部轮廓'
+#      tab_id: 4
+#      page: 1
+#      version: 7.26.3
+#  -
+#      case: '测试feed流tab微整形'
+#      tab_id: 5
+#      page: 1
+#      version: 7.26.3
+#  -
+#      case: '测试feed流tab激光美肤'
+#      tab_id: 6
+#      page: 1
+#      version: 7.26.3
+#  -
+#      case: '测试feed流tab瘦身塑形'
+#      tab_id: 7
+#      page: 1
+#      version: 7.26.3
+#  -
+#      case: '测试feed流tab胸部'
+#      tab_id: 8
+#      page: 1
+#      version: 7.26.3
+#
+#  -
+#      case: '测试feed流tab口腔齿科'
+#      tab_id: 9
+#      page: 1
+#      version: 7.26.3
+#  -
+#      case: '测试feed流tab毛发'
+#      tab_id: 10
+#      page: 1
+#      version: 7.26.3
+
+recommend_counsellors:
+  -
+    case: '全部列表'
+    version: 7.26.3
+
