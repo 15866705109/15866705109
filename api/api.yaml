@@ -201,9 +201,10 @@ counsellors:
   url: /api/consultation_counsel/counsellors
   data: {}
   json: {}
-  params: {'tab_id':1,
-           'page':1,
-           'version':7.26.3}
+  params:
+    tab_id: ${tab_id}
+    page: ${page}
+    version: ${version}
 
 block_info:
   method: get

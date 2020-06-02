@@ -1,5 +1,8 @@
 import pytest
+<<<<<<< HEAD
 import jmespath
+=======
+>>>>>>> yuchao_branch_face
 
 from face_api_test.api import path_setting
 from face_api_test.api.api_face import Testapi
@@ -9,6 +12,7 @@ from face_api_test.testcase.ids_list import get_ids
 
 
 class Test_api:
+<<<<<<< HEAD
     data = BaseApi().api_load(path_setting.TEST_API_DATA)
     orders_param_case, orders_param_data = get_ids(data, 'consultation_orders_param')
     orders_count_case, orders_count_data = get_ids(data, "consultation_orders_count")
@@ -19,10 +23,16 @@ class Test_api:
     reports_case, reports_data = get_ids(data, "reports")
     consultation_order_list_case, consultation_order_list_data = get_ids(data, "consultation_order_list")
     cancel_dispatch_case, cancel_dispatch_data = get_ids(data, "cancel_dispatch")
+=======
+    orders_param_case, orders_param_data = get_ids('consultation_orders_param')
+    orders_count_case, orders_count_data = get_ids("consultation_orders_count")
+    orders_commission_case, orders_commission_data = get_ids("consultation_orders_commission")
+
+
+>>>>>>> yuchao_branch_face
     @classmethod
     def setup_class(cls):
         cls.login = Testapi().login()
-
 
 
     # 测试传参有效性
@@ -40,13 +50,14 @@ class Test_api:
     @pytest.mark.parametrize("param", orders_count_data, ids=orders_count_case)
     def test_consultation_orders_count(self, param):
         counseller_id = Testapi().personal_center()
+        print(counseller_id,1111)
         r = Testapi().consultation_orders(param["year"], param["month"], param["page"])
         firstDay, lastDay = DB().getFirstAndLastDay(param["year"], param["month"])
         sql = "select count(id) as count from " \
               "`consultation_order` where `counsellor_id`= '{}' " \
               "and status=6 and payment_time >= '{}' " \
               "and payment_time < '{}'".format(counseller_id, firstDay, lastDay)
-        DB().get_conn()
+        # DB().get_conn()
         a = DB().query_db(sql)
 
         assert r["data"]["order_count"] == a[0]["count"]

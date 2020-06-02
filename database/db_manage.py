@@ -37,7 +37,7 @@ class DB:
         cur.execute(sql)
         # 4. 获取数据
         result = cur.fetchall()
-        # print(result)
+        print(result)
         return result
 
     # 关闭数据库
@@ -58,7 +58,7 @@ class DB:
 
 
 if __name__ == '__main__':
-   a,b=DB().getFirstAndLastDay(2020,4)
+   # a,b=DB().getFirstAndLastDay(2020,4)
    # print(a,b)
    #  DB().get_conn()
-   #  DB().query_db("select * from consultation_counsellor where id ='00005924604511e5a2a200163e004883'")
+    DB().query_db("select * from consultation_counsellor where id ='00005924604511e5a2a200163e004883'")

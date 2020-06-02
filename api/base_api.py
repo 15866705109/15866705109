@@ -87,12 +87,12 @@ class BaseApi:
             data=req.get('data'),
             json=req.get('json')
         )
-
         return r.json()
 
     #随机生成trace_id
     def trace_id(self):
         return ''.join(random.sample(string.ascii_lowercase + string.digits, 32))
+
 
 
 if __name__ == '__main__':

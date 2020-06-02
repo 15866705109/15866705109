@@ -185,14 +185,22 @@ class Testapi(BaseApi):
     '''
     推荐位视频面诊频道推荐面诊顾问
     '''
-    def recommend_counsellors(self):
+    def recommend_counsellors(self,version):
+        self.params['version']= version
+        #print(self.api_send(self.data['recommend_counsellors']))
         return self.api_send(self.data['recommend_counsellors'])
 
 
     '''
     feed流视频面诊频道tab 面诊顾问列表
     '''
-    def counsellors(self):
+
+    # todo:用装饰器解决参数替换
+    def counsellors(self,tab_id,page,version):
+        self.params["tab_id"] = tab_id
+        self.params["page"] = page
+        self.params["version"] = version
+        #print(self.api_send(self.data['counsellors']))
         return self.api_send(self.data['counsellors'])
     '''
     请求卡片：查看封禁信息
@@ -245,6 +253,7 @@ class Testapi(BaseApi):
 
 if __name__ == '__main__':
     # Testapi().finished_dispatch_task_list()
+<<<<<<< HEAD
     # Testapi().consultation_orders("")
     # Testapi().consultation_orders("2020", "04", "1")
     # Testapi().consultation_order_list()
@@ -257,5 +266,20 @@ if __name__ == '__main__':
     # Testapi().order_check()
     # Testapi().prepare_one2one()
     Testapi().get_user_id()
+=======
+
+    # # Testapi().test_consultation_orders("2020", "04", "1")
+    # # Testapi().consultation_order_list()
+    # # Testapi().consultation_order_detail()
+    # # Testapi().order_payment()
+    # # Testapi().order_cancel()
+    # # Testapi().launch_dispatch()
+    # # Testapi().order_payment_status()
+    # # Testapi().order_info()
+    # # Testapi().order_check()
+    # # Testapi().prepare_one2one()
+    Testapi().recommend_counsellors('7.26.3')
+    # #Testapi().recommend_counsellors()
+>>>>>>> yuchao_branch_face
 
 
