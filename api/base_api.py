@@ -4,6 +4,8 @@
 
 import json
 import os
+import random
+import string
 
 import requests
 import yaml
@@ -11,6 +13,7 @@ import yaml
 
 # from face_api_test.api.api_face import Testapi
 # from face_api_test.api.base_api import Testapi
+from jsonpath import jsonpath
 from pymysql import OperationalError
 
 from face_api_test.api import path_setting
@@ -34,7 +37,8 @@ class BaseApi:
     def api_load(self, path):
         return self.yaml_load(path)
 
-
+    def jsonpath(self, path, **kwargs):
+        return jsonpath(r, path)
 
     def get_cookie(self, req: dict):
 
@@ -86,6 +90,11 @@ class BaseApi:
 
         return r.json()
 
+    #随机生成trace_id
+    def trace_id(self):
+        return ''.join(random.sample(string.ascii_lowercase + string.digits, 32))
+
 
 if __name__ == '__main__':
-    BaseApi().api_load("../api/api.yaml")
+    # BaseApi().api_load("../api/api.yaml")
+    print(BaseApi().trace_id())

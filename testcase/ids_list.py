@@ -5,8 +5,8 @@ from face_api_test.api.base_api import BaseApi
 此文件是用来将case转换成list
 '''
 
-def get_ids(path):
-    data = BaseApi().api_load(path_setting.TEST_API_DATA)
+def get_ids(data, path):
+
     params = data[path]
     case = []
     for ids in params:
