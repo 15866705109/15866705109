@@ -7,10 +7,6 @@ from face_api_test.api.base_api import BaseApi
 '''
 
 def get_ids(data, path):
-<<<<<<< HEAD
-
-=======
->>>>>>> yuchao_branch_face
     params = data[path]
     case = []
     for ids in params:
