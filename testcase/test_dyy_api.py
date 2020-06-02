@@ -1,8 +1,6 @@
 import pytest
-<<<<<<< HEAD
 import jmespath
-=======
->>>>>>> yuchao_branch_face
+
 
 from face_api_test.api import path_setting
 from face_api_test.api.api_face import Testapi
@@ -12,7 +10,7 @@ from face_api_test.testcase.ids_list import get_ids
 
 
 class Test_api:
-<<<<<<< HEAD
+
     data = BaseApi().api_load(path_setting.TEST_API_DATA)
     orders_param_case, orders_param_data = get_ids(data, 'consultation_orders_param')
     orders_count_case, orders_count_data = get_ids(data, "consultation_orders_count")
@@ -23,13 +21,12 @@ class Test_api:
     reports_case, reports_data = get_ids(data, "reports")
     consultation_order_list_case, consultation_order_list_data = get_ids(data, "consultation_order_list")
     cancel_dispatch_case, cancel_dispatch_data = get_ids(data, "cancel_dispatch")
-=======
     orders_param_case, orders_param_data = get_ids('consultation_orders_param')
     orders_count_case, orders_count_data = get_ids("consultation_orders_count")
     orders_commission_case, orders_commission_data = get_ids("consultation_orders_commission")
 
 
->>>>>>> yuchao_branch_face
+
     @classmethod
     def setup_class(cls):
         cls.login = Testapi().login()
