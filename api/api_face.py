@@ -3,7 +3,7 @@
 '''
 from face_api_test.api import path_setting
 from face_api_test.api.base_api import BaseApi
-
+import jmespath
 
 class Testapi(BaseApi):
 
@@ -28,8 +28,8 @@ class Testapi(BaseApi):
         r = self.api_send(self.data["personal_center"])
         url = r["data"]["icon"]["data"][0]["url"]
         counseller_id = url.split("=")[-1]
-        print(counseller_id)
         return counseller_id
+
 
 
     def login(self):
@@ -37,17 +37,28 @@ class Testapi(BaseApi):
         with open(path_setting.GET_COOKIE, 'w+') as f:
             f.write(str(r))
 
+    def get_user_id(self):
+        r = self.api_send(self.data["login"])
+        user_id = r["data"]["user_id"]
+        return user_id
 
     '''
     视频面诊1V1发起接口
     '''
-    def prepare_one2one(self):
+    def prepare_one2one(self, user_gender, user_age, counsellor_id, referer, user_has_aesthetic_medicine, user_target_project):
+        self.params["user_gender"] = user_gender
+        self.params["user_age"] = user_age
+        self.params["counsellor_id"] = counsellor_id
+        self.params["referer"] = referer
+        self.params["user_has_aesthetic_medicine"] = user_has_aesthetic_medicine
+        self.params["user_target_project"] = user_target_project
         return self.api_send(self.data["prepare_one2one"])
 
     '''
     视频面诊订单列表接口
     '''
-    def consultation_order_list(self):
+    def consultation_order_list(self, page):
+        self.params["page"] = page
         return self.api_send(self.data["consultation_order_list"])
 
 
@@ -70,9 +81,11 @@ class Testapi(BaseApi):
     正式发起1V1视频面诊
     '''
 
-    def launch_one2one(self, trace_id):
+    def launch_one2one(self, trace_id, order_no):
         self.params["trace_id"] = trace_id
+        self.params["order_no"] = order_no
         return self.api_send(self.data["launch_one2one"])
+
     '''
     取消订单接口
     '''
@@ -126,7 +139,8 @@ class Testapi(BaseApi):
     '''
     用户取消面诊派单接口
     '''
-    def cancel_dispatch(self):
+    def cancel_dispatch(self, trigger_source):
+        self.params["trigger_source"] = trigger_source
         return self.api_send(self.data["cancel_dispatch"])
 
     '''
@@ -154,7 +168,13 @@ class Testapi(BaseApi):
     '''
     面诊报告列表
     '''
-    def reports(self):
+    def reports(self, page_num, page_size, report_status_type, report_time_type, counsellor_id, record_type):
+        self.params["page_num"]=page_num
+        self.params["page_size"] = page_size
+        self.params["report_status_type"] = report_status_type
+        self.params["report_time_type"] = report_time_type
+        self.params["counsellor_id"] = counsellor_id
+        self.params["record_type"] = record_type
         return self.api_send(self.data["reports"])
 
     def consultant(self):
@@ -225,8 +245,8 @@ class Testapi(BaseApi):
 
 if __name__ == '__main__':
     # Testapi().finished_dispatch_task_list()
-    Testapi().personal_center()
-    # Testapi().test_consultation_orders("2020", "04", "1")
+    # Testapi().consultation_orders("")
+    # Testapi().consultation_orders("2020", "04", "1")
     # Testapi().consultation_order_list()
     # Testapi().consultation_order_detail()
     # Testapi().order_payment()
@@ -236,5 +256,6 @@ if __name__ == '__main__':
     # Testapi().order_info()
     # Testapi().order_check()
     # Testapi().prepare_one2one()
+    Testapi().get_user_id()
 
 
