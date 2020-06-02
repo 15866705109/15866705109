@@ -4,6 +4,8 @@
 
 import json
 import os
+import random
+import string
 
 import requests
 import yaml
@@ -11,6 +13,9 @@ import yaml
 
 # from face_api_test.api.api_face import Testapi
 # from face_api_test.api.base_api import Testapi
+from jsonpath import jsonpath
+from pymysql import OperationalError
+
 from face_api_test.api import path_setting
 
 
@@ -25,16 +30,18 @@ class BaseApi:
     # 封装yaml文件读取
     @classmethod
     def yaml_load(cls, path) -> list:
-        with open(path) as f:
+        with open(path, encoding='utf-8') as f:
             return yaml.safe_load(f)
 
     # 调用yaml加载文件API加载
     def api_load(self, path):
         return self.yaml_load(path)
 
-
+    def jsonpath(self, path, **kwargs):
+        return jsonpath(r, path)
 
     def get_cookie(self, req: dict):
+
         host = self.api_load(path_setting.HOSTYAML_CONFIG)
         r = requests.request(
             req['method'],
@@ -55,8 +62,10 @@ class BaseApi:
 
         return headers
 
+
+
     def read_header(self):
-        with open("../api/get_cookie.txt", 'r') as f:
+        with open("../api/get_cookie.txt", 'r', encoding='utf-8') as f:
             cookies = f.read()
         headers = {"cookie": cookies}
         return headers
@@ -78,9 +87,14 @@ class BaseApi:
             data=req.get('data'),
             json=req.get('json')
         )
-
         return r.json()
+
+    #随机生成trace_id
+    def trace_id(self):
+        return ''.join(random.sample(string.ascii_lowercase + string.digits, 32))
+
 
 
 if __name__ == '__main__':
-    BaseApi().api_load("../api/api.yaml")
+    # BaseApi().api_load("../api/api.yaml")
+    print(BaseApi().trace_id())

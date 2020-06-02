@@ -1,26 +1,456 @@
-"consultation_orders":
+consultation_orders_param:
   -
+    case: "正常请求参数测试202004-1"
     year: 2020
     month: 04
     page: 1
-    asser: 测试通过
+    asser: 0
   -
+    case: "正常参数测试202005-1"
     year: 2020
     month: 05
     page: 1
-    asser: 测试通过
+    asser: 0
   -
+    case: "参数正常无数据202003-1"
     year: 2020
     month: 03
     page: 1
-    asser: 测试通过
+    asser: 0
   -
+    case: "测试输入参数类型202003-str"
     year: 2020
     month: 03
     page: str
-    asser: 测试通过
+    asser: 0
   -
+    case: "测试输入参数类型2020--1 1"
     year: 2022
     month: -1
     page: 1
-    asser: 测试通过
+    asser: 0
+  -
+    case: "测试输入参数类型2020-1 -1"
+    year: 2022
+    month: 1
+    page: -1
+    asser: 0
+  -
+    case: "测试输入参数类型2020-str-1"
+    year: 2022
+    month: str
+    page: 1
+    asser: 0
+
+consultation_orders_count:
+  -
+    case: "测试总单量2020-04"
+    year: 2020
+    month: 04
+    page: 1
+
+
+  -
+    case: "测试总单量2020-05"
+    year: 2020
+    month: 05
+    page: 1
+
+  -
+    case: "测试总单量2020-03"
+    year: 2020
+    month: 03
+    page: 1
+  -
+    case: "测试总单量2020-02"
+    year: 2020
+    month: 02
+    page: 1
+
+  -
+    case: "测试总单量2020-06"
+    year: 2020
+    month: 06
+    page: 1
+
+consultation_orders_commission:
+  -
+    case: "测试总佣金2020-04"
+    year: 2020
+    month: 04
+    page: 1
+
+
+  -
+    case: "测试总佣金2020-05"
+    year: 2020
+    month: 05
+    page: 1
+
+  -
+    case: "测试总佣金2020-03"
+    year: 2020
+    month: 03
+    page: 1
+  -
+    case: "测试总佣金2020-02"
+    year: 2020
+    month: 02
+    page: 1
+
+  -
+    case: "测试总佣金2020-06"
+    year: 2020
+    month: 06
+    page: 1
+
+<<<<<<< HEAD
+prepare_one2one_param:
+  -
+    case: "测试1V1正确传参"
+    user_gender: 1
+    user_age: 23
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    assert: 2
+
+  -
+    case: "测试1V1正确传参conversation_detail"
+    user_gender: 2
+    user_age: 28
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: conversation_detail
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[1,2,1024]"
+    assert: 2
+
+  -
+    case: "测试1V1正确传参expert_detail"
+    user_gender: 2
+    user_age: 28
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[1,2,1024]"
+    assert: 2
+
+  -
+    case: "1V1 性别错误传3"
+    user_gender: 3
+    user_age: 24
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[1,2,1024]"
+    assert: "性别错误"
+
+  -
+    case: "1V1 性别错误传-1"
+    user_gender: -1
+    user_age: 24
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[1,2,1024]"
+    assert: "性别错误"
+
+  -
+    case: "1V1 性别错误传0"
+    user_gender: 0
+    user_age: 24
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[1,2,1024]"
+    assert: "性别错误"
+
+  -
+    case: "1V1 年龄类型传错str"
+    user_gender: 1
+    user_age: str
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[1,2,1024]"
+    assert: "年龄输入错误"
+
+  -
+    case: "1V1 年龄传0"
+    user_gender: 2
+    user_age: 0
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    assert: 2
+
+  -
+    case: "1V1 年龄传-1"
+    user_gender: 2
+    user_age: -1
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    assert: "年龄输入错误"
+
+  -
+    case: "1V1 年龄传入100"
+    user_gender: 1
+    user_age: 100
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[1,2,1024]"
+    assert: 2
+
+  -
+    case: "1V1 年龄传入101"
+    user_gender: 1
+    user_age: 101
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[1,2,1024]"
+    assert: 2
+
+  -
+    case: "1V1 用户不能呼叫自己"
+    user_gender: 2
+    user_age: 0
+    counsellor_id: ""
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    assert: "用户不能呼叫自己"
+
+  -
+    case: "1V1 对方已经下线"
+    user_gender: 2
+    user_age: 0
+    counsellor_id: b693bb3856b611eaac203c15c2e151ea
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    assert: "对方已下线，可以关注并私信他哟～"
+
+  -
+    case: "1V1 referer传参非3种类型可正常请求"
+    user_gender: 2
+    user_age: 0
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: referer
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    assert: 2
+
+  -
+    case: "1V1 user_target_project参数为空"
+    user_gender: 2
+    user_age: 0
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: referer
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[]"
+    assert: 2
+
+  -
+    case: "1V1 user_target_project参数不在范围内"
+    user_gender: 2
+    user_age: 0
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: referer
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2,3,4,-1]"
+    assert: 2
+
+  -
+    case: "1V1 user_has_aesthetic_medicine参数为0"
+    user_gender: 2
+    user_age: 0
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: referer
+    user_has_aesthetic_medicine: 0
+    user_target_project: "[0,1,2]"
+    assert: 2
+
+  -
+    case: "1V1 user_has_aesthetic_medicine参数为-1"
+    user_gender: 2
+    user_age: 0
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: referer
+    user_has_aesthetic_medicine: -1
+    user_target_project: "[0,1,2]"
+    assert: 2
+
+
+  -
+    case: "对方已下线"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: e4277b5ebb2b44ed8286188c4a6e8795
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    trace_id: ""
+    assert: "对方已下线，可以关注并私信他哟～"
+
+  -
+    case: "医生不存在,会报错"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: e4277b5ebb2b44ed8286188c4a6e8789
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    trace_id: ""
+    assert: "医生不存在"
+  -
+    case: "用户存在未结束的通话"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    trace_id: ""
+    assert: "用户存在未结束的通话"
+
+  -
+    case: "当前面诊账号被禁止使用视频面诊"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: c4233eecf19942b1b43f044002596f99
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    trace_id: ""
+    assert: "当前面诊账号被禁止使用视频面诊"
+
+
+launch_one2one:
+  -
+    case: "launch_one2one订单测试"   #第一case和第二case可测试perone_to的面诊中的情况
+    user_gender: 2
+    user_age: 1
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    assert: 0
+
+  -
+    case: "prepare_one2one的面诊中case"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    assert: "对方正在面诊中，请稍后再试"
+
+#TODO 呼叫失败，请稍后再试还未走通
+  -
+    case: "trace_id为空的情况"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    trace_id: ""
+    assert: "呼叫失败，请稍后再试"
+
+
+
+lanunch_one2one_ecp:
+  -
+    case: "随机伪造订单，面诊订单不存在"
+    order_no: 12028202
+    trace_id: 1af8f673f93c95dce609dde572cbe51b
+    assert: "面诊订单不存在"
+  -
+    case: "订单格式带字母，面诊订单不存在"
+    order_no: 12028202aaa
+    trace_id: 1af8f673f93c95dce609dde572cbe51b
+    assert: "面诊订单不存在"
+  -
+    case: "订单为空，面诊订单不存在"
+    order_no: ""
+    trace_id: 1af8f673f93c95dce609dde572cbe51b
+    assert: "面诊订单不存在"
+  -
+    case: "trace_id为空，面诊订单未支付，请先支付"
+    order_no: 1120041834834616
+    trace_id: ""
+    assert: "面诊订单未支付，请先支付"
+
+reports:
+  -
+    case: "测试"
+    page_num: 1
+    page_size: 20
+    report_status_type: 1
+    record_type: 3
+    report_time_type: 0
+
+consultation_order_list:
+  -
+    case: "page传参1"
+    page: 1
+    assert: 0
+
+  -
+    case: "page传76"
+    page: 76
+    assert: 0
+
+  -
+    case: "page传str"
+    page: str
+    assert: "page传参错误"
+
+  -
+    case: "page传-1"
+    page: -1
+    assert: 未知错误
+
+  -
+    case: "page传特殊字符"
+    page: "*&*"
+    assert: 未知错误
+
+cancel_dispatch:
+  -
+    case: "取消订单click_cancel"
+    trigger_source: click_cancel
+    assert: "取消连线成功"
+
+  -
+    case: "取消订单timer_finish"
+    trigger_source: timer_finish
+    assert: "取消连线成功"
+
+  -
+    case: "取消订单touch_back"
+    trigger_source: touch_back
+    assert: "取消连线成功"
+
+  -
+    case: "取消订单传非规定字段"
+    trigger_source: 123456
+    assert: "取消连线成功"
+
+  -
+    case: "取消订单传非规定字段"
+    trigger_source:
+    assert: "取消连线成功"
+=======
+
+
+
+
+>>>>>>> yuchao_branch_face
