@@ -390,12 +390,61 @@ lanunch_one2one_ecp:
 
 reports:
   -
-    case: "测试"
+    case: "status为0"
     page_num: 1
-    page_size: 20
-    report_status_type: 1
-    record_type: 3
+    page_size: 10
+    report_status_type: 0
+    record_type: 0
     report_time_type: 0
+
+  -
+    case: "status为1"
+    page_num: 1
+    page_size: 10
+    report_status_type: 1
+    record_type: 0
+    report_time_type: 0
+
+  -
+    case: "status为2"
+    page_num: 1
+    page_size: 10
+    report_status_type: 2
+    record_type: 0
+    report_time_type: 0
+
+  -
+    case: "page传错数据类型"
+    page_num: str
+    page_size: 10
+    report_status_type: 2
+    record_type: 0
+    report_time_type: 0
+
+  -
+    case: "status传不存在的值3"
+    page_num: 1
+    page_size: 10
+    report_status_type: 3
+    record_type: 0
+    report_time_type: 0
+
+  -
+    case: "record_type为1"
+    page_num: 1
+    page_size: 10
+    report_status_type: 2
+    record_type: 1
+    report_time_type: 0
+
+  -
+    case: "record_type为str"
+    page_num: 1
+    page_size: 10
+    report_status_type: 2
+    record_type: str
+    report_time_type: 0
+
 
 consultation_order_list:
   -
@@ -449,3 +498,73 @@ cancel_dispatch:
     trigger_source:
     assert: "取消连线成功"
 
+prepare_dispatch:
+  -
+    case: "派单测试"
+    user_gender: 2
+    user_age: 1
+    counsellor_id:
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    counsellor_type: 2
+    assert: 0
+
+  -
+    case: "派单正常参数测试"
+    user_gender: 1
+    user_age: 24
+    counsellor_id:
+    referer: expert_detail
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    counsellor_type: 1
+    assert: 0
+
+  -
+    case: "派单正常参数测试加counselor_id"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: bca0e744df3f461bb7815bb7618f29b1
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    counsellor_type: 1
+    assert: 0
+
+  -
+    case: "派单正常参数测试加counselor_id"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: bca0e744df3f461bb7815bb7618f29b1
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    counsellor_type: 1
+    assert0: "推荐支付宝用户使用"
+    assert1: "推荐安装微信5.0及以上版本使用"
+
+  -
+    case: "派单正常参数测试加counselor_id"
+    user_gender: 1
+    user_age: 24
+    counsellor_id: bca0e744df3f461bb7815bb7618f29b1
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[0,1,2]"
+    counsellor_type: 1
+
+home:
+  -
+    case: "测试开启面诊"
+    status: 1
+    status_button_text: "开启面诊"
+    text1: "面诊派单"
+    text2: "面诊报告"
+
+  -
+    case: "测试关闭面诊"
+    status: 2
+    status_button_text: "关闭面诊"
+    text1: "面诊派单"
+    text2: "面诊报告"

@@ -51,15 +51,20 @@ class BaseApi:
             data=req['data'],
             json=req['json']
         )
-        item = r.cookies.values()
-
-        if len(item) == 1:
-            headers = '_gtid={}'.format(item[0])
-            print("cookie异常")
-
-        else:
-            headers = '_gtid={};sessionid={}'.format(item[0], item[1])
-
+        # print(r.cookies)
+        dict={}
+        for i in r.cookies:
+            dict[i.name]=i.value
+        headers = '_gtid={};sessionid={}'.format(dict["_gtid"], dict["sessionid"])
+        # item = r.cookies.values()
+        # print("ppppppp",item)
+        # if len(item) == 1:
+        #     headers = '_gtid={}'.format(item[0])
+        #     print("cookie异常")
+        #
+        # else:
+        #     headers = '_gtid={};sessionid={}'.format(item[0], item[1])
+        #
         return headers
 
 
