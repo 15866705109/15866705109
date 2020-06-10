@@ -21,7 +21,8 @@ class Test_api:
     reports_case, reports_data = get_ids(data, "reports")
     consultation_order_list_case, consultation_order_list_data = get_ids(data, "consultation_order_list")
     cancel_dispatch_case, cancel_dispatch_data = get_ids(data, "cancel_dispatch")
-
+    prepare_dispatch_case, prepare_dispatch_data = get_ids(data, "prepare_dispatch")
+    home_case, home_data = get_ids(data, "home")
 
     @classmethod
     def setup_class(cls):
@@ -193,23 +194,42 @@ class Test_api:
         r = Testapi().get_current_dispatch_info()
         print(r)
 
+    @pytest.mark.parametrize("param", prepare_dispatch_data, ids=prepare_dispatch_case)
+    def test_prepare_dispatch(self, param):
+        r = Testapi().prepare_dispatch(param["user_gender"], param["user_age"],
+                                       param["referer"], param["user_has_aesthetic_medicine"],
+                                       param["user_target_project"], param["counsellor_id"], param["counsellor_type"])
+        if param["assert0"] and param["assert1"]:
+            assert r["data"]["payment_channels"][0]["desc"] == param["assert0"]
+            assert r["data"]["payment_channels"][1]["desc"] == param["assert1"]
+
+    def test_report_event(self):
+        r = Testapi().launch_one2one(BaseApi().trace_id(), "1120060891259741")
+        print(r)
+
     def test_launch_dispatch(self):
         r = Testapi().launch_dispatch()
         print(r)
 
-    # todo；感觉没必要写
+    # todo:简单写
     def test_current_dispatch_task_list(self):
         r = Testapi().current_dispatch_task_list()
         assert r["error"] == 0
 
+    #todo:简单写
     def test_current_dispatch_task_count(self):
         r = Testapi().current_dispatch_task_count()
         assert r["error"] == 0
 
 
-    def test_home(self):
-        r = Testapi().home()
-        assert r["error"] == 0
+    @pytest.mark.parametrize("param", home_data, ids=home_case)
+    def test_home(self,param):
+        doctor_id = Testapi().personal_center()
+        r = Testapi().home(doctor_id)
+        assert r["data"]["status"] == param["status"]
+        assert r["data"]["status_button_text"] == param["status_button_text"]
+        assert r["data"]["icon_list"][0]["text"] == param["text1"]
+        assert r["data"]["icon_list"][1]["text"] == param["text2"]
 
 
     @pytest.mark.parametrize("param", reports_data, ids=reports_case)
@@ -218,6 +238,8 @@ class Test_api:
         r = Testapi().reports(param["page_num"], param["page_size"], param["report_status_type"],
                               param["report_time_type"], counsellor_id, param["record_type"])
 
+        assert r["error"] == 0
+        assert r["data"]["total"] > 0
 
 
 if __name__ == '__main__':

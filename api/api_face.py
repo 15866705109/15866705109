@@ -101,8 +101,15 @@ class Testapi(BaseApi):
     '''
     尝试发起派单请求
     '''
-    def prepare_dispatch(self):
-        pass
+    def prepare_dispatch(self, user_gender, user_age, referer, user_has_aesthetic_medicine, user_target_project, counsellor_id, counsellor_type):
+        self.params["user_gender"] = user_gender
+        self.params["user_age"] = user_age
+        self.params["counsellor_id"] = counsellor_id
+        self.params["referer"] = referer
+        self.params["user_has_aesthetic_medicine"] = user_has_aesthetic_medicine
+        self.params["user_target_project"] = user_target_project
+        self.params["counsellor_type"] = counsellor_type
+        return self.api_send(self.data["prepare_dispatch"])
 
 
     '''
@@ -123,8 +130,11 @@ class Testapi(BaseApi):
     '''
     订单挂断时接口
     '''
-    def report_event(self):
-        pass
+    def report_event(self, envent_type, consultation_record_id):
+        self.params["envent_type"] = envent_type
+        self.params["consultation_record_id"] = consultation_record_id
+        return self.api_send(self.data["report_event"])
+
     '''
     派单匹配成功接口，用户获取当前面诊派单接口
     '''
@@ -151,8 +161,8 @@ class Testapi(BaseApi):
     '''
     视频面诊工作台-首页
     '''
-    def home(self):
-
+    def home(self, doctor_id):
+        self.params["doctor_id"] = doctor_id
         return self.api_send(self.data["home"])
     '''
     视频面诊工作台 - 待抢面诊派单 
@@ -259,12 +269,13 @@ if __name__ == '__main__':
     # Testapi().consultation_order_detail()
     # Testapi().order_payment()
     # Testapi().order_cancel()
+    Testapi().login()
     # Testapi().launch_dispatch()
     # Testapi().order_payment_status()
     # Testapi().order_info()
     # Testapi().order_check()
     # Testapi().prepare_one2one()
-    Testapi().get_user_id()
+    # Testapi().get_user_id()
     # # Testapi().test_consultation_orders("2020", "04", "1")
     # # Testapi().consultation_order_list()
     # # Testapi().consultation_order_detail()
@@ -275,7 +286,7 @@ if __name__ == '__main__':
     # # Testapi().order_info()
     # # Testapi().order_check()
     # # Testapi().prepare_one2one()
-    Testapi().recommend_counsellors('7.26.3')
+    # Testapi().recommend_counsellors('7.26.3')
     # #Testapi().recommend_counsellors()
 
 
