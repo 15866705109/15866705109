@@ -201,7 +201,8 @@ class Testapi(BaseApi):
         self.params["page"] = page
         self.params["version"] = version
         #print(self.api_send(self.data['counsellors']))
-        return self.api_send(self.data['counsellors'])
+        return self.api_send(
+            self.data['counsellors'])
     '''
     请求卡片：查看封禁信息
     '''
@@ -212,8 +213,12 @@ class Testapi(BaseApi):
     '''
     请求卡片：判断是否新用户，获取消费者信息
     '''
-    def customer(self):
+    def customer(self,counsellor_id,doctor_id):
+        self.params['counsellor_id'] = counsellor_id
+        self.params['doctor_id'] = doctor_id
+        print(self.api_send(self.data['customer']))
         return self.api_send(self.data['customer'])
+
 
 
 
@@ -252,9 +257,9 @@ class Testapi(BaseApi):
 
 
 if __name__ == '__main__':
-    # Testapi().finished_dispatch_task_list()
+     Testapi().finished_dispatch_task_list()
     # Testapi().consultation_orders("")
-    Testapi().consultation_orders("2020", "04", "1")
+    #Testapi().consultation_orders("2020", "04", "1")
     # Testapi().consultation_order_list()
     # Testapi().consultation_order_detail()
     # Testapi().order_payment()
@@ -264,6 +269,7 @@ if __name__ == '__main__':
     # Testapi().order_info()
     # Testapi().order_check()
     # Testapi().prepare_one2one()
+
     #Testapi().get_user_id()
 
     # Testapi().test_consultation_orders("2020", "04", "1")
@@ -278,5 +284,23 @@ if __name__ == '__main__':
     # Testapi().prepare_one2one()
     #Testapi().recommend_counsellors('7.26.3')
     #Testapi().recommend_counsellors()
+
+    #Testapi().get_user_id()
+    # # Testapi().test_consultation_orders("2020", "04", "1")
+    # # Testapi().consultation_order_list()
+    # # Testapi().consultation_order_detail()
+    # # Testapi().order_payment()
+    # # Testapi().order_cancel()
+    # # Testapi().launch_dispatch()
+    # # Testapi().order_payment_status()
+    # # Testapi().order_info()
+    # # Testapi().order_check()
+    # # Testapi().prepare_one2one()
+    #Testapi().recommend_counsellors('7.26.3')
+    # #Testapi().recommend_counsellors()
+    #Testapi().customer('','')
+    #
+
+
 
 

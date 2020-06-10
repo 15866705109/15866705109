@@ -63,3 +63,10 @@ recommend_counsellors:
     case: '全部列表'
     version: 7.26.3
 
+
+customer:
+  -
+    case: '新用户'
+    counsellor_id: ''
+    doctor_id: ''
+

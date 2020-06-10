@@ -217,7 +217,10 @@ block_info:
 customer:
   method: get
   url: /api/consultation_counsel/customer
-  params: {}
+  params:
+  counsellor_id: ${counsellor_id}
+  doctor_id: ${doctor_id}
+
   json: {}
   data: {}
 

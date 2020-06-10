@@ -1,5 +1,5 @@
 from face_api_test.api import path_setting
-from face_api_test.api.base_api import BaseApi
+from face_api_test.api.base_api import BasegiApi
 
 
 '''
@@ -7,7 +7,6 @@ from face_api_test.api.base_api import BaseApi
 '''
 
 def get_ids(data, path):
-
     params = data[path]
     case = []
     for ids in params:
