@@ -75,6 +75,15 @@ prepare_one2one:
   json: {}
   params: {}
 
+get_consultation_record:
+  method: get
+  url: /api/consultation_counsel/get_consultation_record
+  headers:
+    Cookie: ${Cookie}
+  params:
+    consultation_record_id: ${consultation_record_id}
+    version: 7.28.1
+
 
 order_cancel:
   method: post
@@ -100,22 +109,21 @@ prepare_dispatch:
 launch_dispatch:
   method: post
   url: /api/consultation_counsel/launch_dispatch
-  data: {
-    "trace_id": 5acf50b77ede99f39e054c600e840800,
-    "order_no": 1120050957383786,
-    "counsellor_type": 1,
-    "use_last_data": 0,
-    "user_age": 23,
-    "user_gender": 1,
-    "user_has_aesthetic_medicine": 0,
-    "user_target_project": "[0]",
-  }
+  data:
+    order_no: ${order_no}
+    traceId: ${traceId}
 
-report_envent:
+report_event:
   method: post
   url: /api/consultation_counsel/report_event
+  headers:
+    User-Agent: ${User-Agent}
+    Content-Type: application/x-www-form-urlencoded
+    Cookie: ${Cookie}
+  params:
+    device_id: ${device_id}
   data:
-    envent_type: ${envent_type}
+    event_type: ${event_type}
     consultation_record_id: ${consultation_record_id}
 
 order_payment_status:
@@ -130,20 +138,16 @@ order_payment_status:
 order_info:
   method: get
   url: /api/consultation_counsel/order_info
-  data: {
-          "order_no": 1120042399838646
-  }
-  json: {}
-  params: {}
+  params:
+    order_no: ${order_no}
+    version: 7.28.1
 
 order_check:
   method: post
   url: /api/consultation_counsel/order_check
-  data: {
-           "order_no": 1120042399838646
-  }
-  json: {}
-  params: {}
+  data:
+    order_no: ${order_no}
+
 
 launch_one2one:
   method: post
@@ -183,6 +187,17 @@ home:
 current_dispatch_task_list:
   url: /api/consultation_counsel/workbench/current_dispatch_task_list
   method: get
+  headers:
+    Cookie: _gtid=b8cecd70b14c11ea91a15a21f9a9ca6e4534; sessionid=jh1pd12fvdpfn7q478wmvkbpegmvy3c3; _gm_token=ccedf31592475400
+  params:
+    device_id: ${device_id}
+    version: 7.28.1
+    platform: android
+
+
+current_dispatch_ping:
+  url: /api/consultation_counsel/current_dispatch_ping
+  method: post
 
 current_dispatch_task_count:
   url: /api/consultation_counsel/workbench/current_dispatch_task_count
@@ -279,9 +294,10 @@ finished_dispatch_task_list:
 join_dispatch:
   method: post
   url: /api/consultation_counsel/workbench/join_dispatch
-  data: {'dispatch_task_id':cc3f4b74900d11eab13fb2a288b9f1c3}
-  json: {}
-  params: {}
+  headers:
+    Cookie: ${Cookie}
+  data:
+    dispatch_task_id: ${dispatch_task_id}
 
 evaluate:
   method: post
