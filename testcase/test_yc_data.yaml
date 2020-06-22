@@ -1,15 +1,22 @@
 consultation_param:
   -
-    case: '测试feed流tab全部'
-    tab_id: 0
+    case: '第一页'
+    tab_id: 1
     page: 1
     version: 7.26.3
 
   -
-    case: '测试feed流tab眼部'
+    case: '第二页'
     tab_id: 1
-    page: 1
+    page: 2
     version: 7.26.3
+#  -
+#    case: '测试feed流传入str'
+#    tab_id: str
+#    page: 1
+#    version: 7.26.3
+
+
 #  -
 #      case: '测试feed流tab鼻部'
 #      tab_id: 2
@@ -60,13 +67,25 @@ consultation_param:
 
 recommend_counsellors:
   -
-    case: '全部列表'
+    case: '首页推荐位'
     version: 7.26.3
 
 
 customer:
   -
-    case: '新用户'
+    case: '是否新用户1'
+    counsellor_id: '0505a26e42074dd081ca3528299bd18a'
+    doctor_id: ''
+  -
+    case: '是否新用户2'
     counsellor_id: ''
     doctor_id: ''
+
+consultation_apply_form_info:
+  -
+    case: '获取上次信息'
+    doctor_id: ''
+    counsellor_id: '0505a26e42074dd081ca3528299bd18a'
+    record_type: '1'
+
 

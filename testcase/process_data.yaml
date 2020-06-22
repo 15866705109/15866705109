@@ -1,0 +1,8 @@
+per_lan_envent:
+  user_gender: 1
+  user_age: 23
+  counsellor_id: d4b12886a1ba4c6794b738799db6d4fe #dream401医生
+  referer: video_face_consultation
+  user_has_aesthetic_medicine: 1
+  user_target_project: "[1,2,1024]"
+

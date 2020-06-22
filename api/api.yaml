@@ -30,7 +30,8 @@ login:
   url: /api/accounts/login/password
   params: {}
   headers: {
-             "User-Agent": Gengmei/7.26.3 (com.wanmeizhensuo.ZhengXing; build:202005181719; iOS 13.3.0) Alamofire/4.7.0
+             "User-Agent": com.wanmeizhensuo.zhensuo/7.27.2 AsyncHttpClient/1.4.5 Android/9,
+             "Content-Type": application/x-www-form-urlencoded
   }
   json: {}
   data: {
@@ -84,6 +85,18 @@ order_cancel:
   json: {}
   params: {}
 
+prepare_dispatch:
+  method: post
+  url: /api/consultation_counsel/prepare_dispatch
+  data:
+    user_gender: ${user_gender}
+    user_age: ${user_age}
+    counsellor_id: ${counsellor_id}
+    referer: ${referer}
+    user_has_aesthetic_medicine: ${user_has_aesthetic_medicine}
+    user_target_project: ${user_target_project}
+    counsellor_type: ${counsellor_type}
+
 launch_dispatch:
   method: post
   url: /api/consultation_counsel/launch_dispatch
@@ -98,7 +111,12 @@ launch_dispatch:
     "user_target_project": "[0]",
   }
 
-
+report_envent:
+  method: post
+  url: /api/consultation_counsel/report_event
+  data:
+    envent_type: ${envent_type}
+    consultation_record_id: ${consultation_record_id}
 
 order_payment_status:
   method: get
@@ -159,6 +177,8 @@ cancel_dispatch:
 home:
   url: /api/consultation_counsel/workbench/home
   method: get
+  params:
+    doctor_id: ${doctor_id}
 
 current_dispatch_task_list:
   url: /api/consultation_counsel/workbench/current_dispatch_task_list
@@ -218,8 +238,8 @@ customer:
   method: get
   url: /api/consultation_counsel/customer
   params:
-  counsellor_id: ${counsellor_id}
-  doctor_id: ${doctor_id}
+    counsellor_id: ${counsellor_id}
+    doctor_id: ${doctor_id}
 
   json: {}
   data: {}
@@ -228,10 +248,11 @@ customer:
 consultation_apply_form_info:
   method: get
   url: /api/consultation_counsel/consultation_apply_form_info
-  params: {
-           'doctor_id':'liuchunjun',
-           'counsellor_id':'0505a26e42074dd081ca3528299bd18a',
-           'record_type':'1'}
+  params:
+    doctor_id: ${doctor_id}
+    counsellor_id: ${counsellor_id}
+    record_type: ${record_type}
+    version: 7.23.10
   json: {}
   data: {}
 
@@ -272,5 +293,43 @@ evaluate:
   data: {
           "diagnosis_id":"845392f6901311eaa1d3cae9f517ce6a",
           "star":"5"}
+  json: {}
+  params: {}
+
+evaluate_items:
+  method: get
+  url: /api/consultation_counsel/evaluate/items
+  data: {}
+  json: {}
+  params: {}
+
+complaint:
+  method: post
+  url: /api/consultation_counsel/complaint
+  data: {}
+  json: {}
+  params: {}
+
+get_recommended_bag:
+  url: /api/consultation_counsel/get_recommended_bag
+  data: {}
+  json: {}
+  params: {}
+
+add_recommended_bag:
+  url: /api/consultation_counsel/add_recommended_bag
+  data: {}
+  json: {}
+  params: {}
+
+search_service:
+  url: /api/consultation_counsel/search_service
+  data: {}
+  json: {}
+  params: {}
+
+delete_recommended_bag:
+  url:  /api/consultation_counsel/delete_recommended_bag
+  data: {}
   json: {}
   params: {}

@@ -1,5 +1,5 @@
 from face_api_test.api import path_setting
-from face_api_test.api.base_api import BasegiApi
+# from face_api_test.api.base_api import BasegiApi
 
 
 '''

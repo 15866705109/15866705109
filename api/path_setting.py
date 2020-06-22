@@ -20,3 +20,6 @@ TEST_API_DATA = os.path.join(BASE_DIR, "testcase", "test_dyy_data.yaml")
 
 #于超 test_yc_data.yaml
 YUCHAO_TEST_DATA = os.path.join(BASE_DIR, "testcase", "test_yc_data.yaml")
+
+# process_Data
+PROCESS_DATA = os.path.join(BASE_DIR, "testcase", "process_data.yaml")

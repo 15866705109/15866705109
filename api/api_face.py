@@ -101,8 +101,15 @@ class Testapi(BaseApi):
     '''
     尝试发起派单请求
     '''
-    def prepare_dispatch(self):
-        pass
+    def prepare_dispatch(self, user_gender, user_age, referer, user_has_aesthetic_medicine, user_target_project, counsellor_id, counsellor_type):
+        self.params["user_gender"] = user_gender
+        self.params["user_age"] = user_age
+        self.params["counsellor_id"] = counsellor_id
+        self.params["referer"] = referer
+        self.params["user_has_aesthetic_medicine"] = user_has_aesthetic_medicine
+        self.params["user_target_project"] = user_target_project
+        self.params["counsellor_type"] = counsellor_type
+        return self.api_send(self.data["prepare_dispatch"])
 
 
     '''
@@ -123,8 +130,11 @@ class Testapi(BaseApi):
     '''
     订单挂断时接口
     '''
-    def report_event(self):
-        pass
+    def report_event(self, envent_type, consultation_record_id):
+        self.params["envent_type"] = envent_type
+        self.params["consultation_record_id"] = consultation_record_id
+        return self.api_send(self.data["report_event"])
+
     '''
     派单匹配成功接口，用户获取当前面诊派单接口
     '''
@@ -151,8 +161,8 @@ class Testapi(BaseApi):
     '''
     视频面诊工作台-首页
     '''
-    def home(self):
-
+    def home(self, doctor_id):
+        self.params["doctor_id"] = doctor_id
         return self.api_send(self.data["home"])
     '''
     视频面诊工作台 - 待抢面诊派单 
@@ -216,7 +226,6 @@ class Testapi(BaseApi):
     def customer(self,counsellor_id,doctor_id):
         self.params['counsellor_id'] = counsellor_id
         self.params['doctor_id'] = doctor_id
-        print(self.api_send(self.data['customer']))
         return self.api_send(self.data['customer'])
 
 
@@ -226,7 +235,10 @@ class Testapi(BaseApi):
     请求卡片：面诊师表单获取上一次信息接口
     '''
 
-    def consultation_apply_form_info(self):
+    def consultation_apply_form_info(self,doctor_id,counsellor_id,record_type):
+        self.params['doctor_id'] = doctor_id
+        self.params['counsellor_id'] = counsellor_id
+        self.params['record_type'] = record_type
         return self.api_send(self.data["consultation_apply_form_info"])
 
     '''
@@ -248,16 +260,57 @@ class Testapi(BaseApi):
         return self.api_send(self.data['finished_dispatch_task_list'])
 
     '''
-    视频面诊工作台-面诊师抢派单，参数有问题待修复
+    视频面诊工作台-面诊师抢派单
     '''
     def join_dispatch(self):
+        print(self.api_send(self.data['join_dispatch']))
         return self.api_send(self.data['join_dispatch'])
+
+    '''
+        打星评价获取
+    '''
+    def evaluate_items(self):
+        return self.api_send(self.data['evaluate_items'])
+
+    '''
+      投诉意见
+    '''
+    def complaint(self):
+        print(self.api_send(self.data['complaint']))
+        return self.api_send(self.data['complaint'])
+
+    '''
+    推荐带数据获取
+    '''
+    def get_recommended_bag(self):
+        return self.api_send(self.data['get_recommended_bag'])
+
+    '''
+    添加推荐袋
+    '''
+    def add_recommended_bag(self):
+        return self.api_send(self.data['add_recommended_bag'])
+
+    '''
+    推荐袋搜索
+    '''
+    def search_service(self):
+        return self.api_send(self.data['search_service'])
+
+    '''
+    删除推荐袋
+    '''
+    def delete_recommended_bag(self):
+        return self.api_send(self.data['delete_recommended_bag'])
+
+
+
 
 
 
 
 if __name__ == '__main__':
-     Testapi().finished_dispatch_task_list()
+     #Testapi().finished_dispatch_task_list()
     # Testapi().consultation_orders("")
     #Testapi().consultation_orders("2020", "04", "1")
     # Testapi().consultation_order_list()
@@ -271,35 +324,9 @@ if __name__ == '__main__':
     # Testapi().prepare_one2one()
 
     #Testapi().get_user_id()
+    #Testapi().consultation_apply_form_info(1,1,1)
+    Testapi().complaint()
 
-    # Testapi().test_consultation_orders("2020", "04", "1")
-    # Testapi().consultation_order_list()
-    # Testapi().consultation_order_detail()
-    # Testapi().order_payment()
-    # Testapi().order_cancel()
-    # Testapi().launch_dispatch()
-    # Testapi().order_payment_status()
-    # Testapi().order_info()
-    # Testapi().order_check()
-    # Testapi().prepare_one2one()
-    #Testapi().recommend_counsellors('7.26.3')
-    #Testapi().recommend_counsellors()
-
-    #Testapi().get_user_id()
-    # # Testapi().test_consultation_orders("2020", "04", "1")
-    # # Testapi().consultation_order_list()
-    # # Testapi().consultation_order_detail()
-    # # Testapi().order_payment()
-    # # Testapi().order_cancel()
-    # # Testapi().launch_dispatch()
-    # # Testapi().order_payment_status()
-    # # Testapi().order_info()
-    # # Testapi().order_check()
-    # # Testapi().prepare_one2one()
-    #Testapi().recommend_counsellors('7.26.3')
-    # #Testapi().recommend_counsellors()
-    #Testapi().customer('','')
-    #
 
 
 
