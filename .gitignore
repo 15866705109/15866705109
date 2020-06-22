@@ -104,3 +104,6 @@ venv.bak/
 .mypy_cache/
 #过滤掉写入的cookie
 api/get_cookie.txt
+
+
+api/get_cookie.txt

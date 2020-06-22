@@ -83,12 +83,19 @@ class BaseApi:
             raw = raw.replace(f"${{{key}}}", repr(value))
         req = yaml.safe_load(raw)
 
-        headers = self.read_header()
+        print('------',req.get('headers'))
+        hd = req.get('headers')
+        if hd == None:
+            user_headers = self.read_header()
+        elif hd["Cookie"]:
+            user_headers = req.get('headers')
+        else:
+            user_headers = self.read_header()
         r = requests.request(
             req['method'],
             url=host['merchant_host']['url'] + req['url'],
             params=req.get('params'),
-            headers=headers,
+            headers=user_headers,
             data=req.get('data'),
             json=req.get('json')
         )

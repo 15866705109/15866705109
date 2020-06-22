@@ -12,6 +12,7 @@ from face_api_test.testcase.ids_list import get_ids
 class Test_api:
     # 拿到ias里的返回值
     yc_data= BaseApi().api_load(path_setting.YUCHAO_TEST_DATA)
+    yc_data1 = BaseApi().api_load(path_setting.YUCHAO_TEST_DATA)
     # 拿到path_setting文件里的传参
     orders_counsellors_case, orders_counsellors_data = get_ids(yc_data, 'recommend_counsellors')
     orders_param_case, orders_param_data = get_ids(yc_data, 'consultation_param')

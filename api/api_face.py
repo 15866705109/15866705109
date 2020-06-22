@@ -86,6 +86,10 @@ class Testapi(BaseApi):
         self.params["order_no"] = order_no
         return self.api_send(self.data["launch_one2one"])
 
+    def get_consultation_record(self, cookie, consultation_record_id):
+        self.params["Cookie"] = cookie
+        self.params["consultation_record_id"] = consultation_record_id
+        return self.api_send(self.data["get_consultation_record"])
     '''
     取消订单接口
     '''
@@ -95,7 +99,9 @@ class Testapi(BaseApi):
     '''
     正式发起派单请求
     '''
-    def launch_dispatch(self):
+    def launch_dispatch(self, order_no, traceId):
+        self.params["order_no"] = order_no
+        self.params["traceId"] = traceId
         return self.api_send(self.data["launch_dispatch"])
 
     '''
@@ -121,19 +127,27 @@ class Testapi(BaseApi):
     '''
     订单确认页信息
     '''
-    def order_info(self):
+    def order_info(self, order_no):
+        self.params["order_no"] = order_no
         return self.api_send(self.data["order_info"])
 
-    def order_check(self):
+    def order_check(self, order_no):
+        self.params["order_no"] = order_no
         return self.api_send(self.data["order_check"])
 
     '''
     订单挂断时接口
     '''
-    def report_event(self, envent_type, consultation_record_id):
-        self.params["envent_type"] = envent_type
+    def report_event(self, user_agent, cookie, event_type, consultation_record_id, device_id="65D3E5E7-DB71-43F3-910D-B0345C752419"):
+        self.params["User-Agent"] = user_agent
+        self.params["Cookie"] = cookie
+        self.params["device_id"] = device_id
+        self.params["event_type"] = event_type
         self.params["consultation_record_id"] = consultation_record_id
         return self.api_send(self.data["report_event"])
+
+    def current_dispatch_ping(self):
+        return self.api_send(self.data["current_dispatch_ping"])
 
     '''
     派单匹配成功接口，用户获取当前面诊派单接口
@@ -167,7 +181,8 @@ class Testapi(BaseApi):
     '''
     视频面诊工作台 - 待抢面诊派单 
     '''
-    def current_dispatch_task_list(self):
+    def current_dispatch_task_list(self, device_id="androidid_a4dfb9b8f4852fe8"):
+        self.params["device_id"] = device_id
         return self.api_send(self.data["current_dispatch_task_list"])
 
     '''
@@ -186,6 +201,7 @@ class Testapi(BaseApi):
         self.params["counsellor_id"] = counsellor_id
         self.params["record_type"] = record_type
         return self.api_send(self.data["reports"])
+
 
     def consultant(self):
         pass
@@ -264,6 +280,9 @@ class Testapi(BaseApi):
     '''
     def join_dispatch(self):
         print(self.api_send(self.data['join_dispatch']))
+    def join_dispatch(self, cookie, dispatch_task_id):
+        self.params["Cookie"] = cookie
+        self.params["dispatch_task_id"] = dispatch_task_id
         return self.api_send(self.data['join_dispatch'])
 
     '''
