@@ -30,26 +30,28 @@ join_failed:
 normal_process:
   -
     case: "1V1正常流程测试"
-    headers:
     user_gender: 1
     user_age: 35
-    counsellor_id: 0505a26e42074dd081ca3528299bd18a #昵称1234
+    counsellor_id: e78c50f0579311ea8e7b623ce5e68eba
     referer: video_face_consultation
     user_has_aesthetic_medicine: 1
     user_target_project: "[1,2,1024]"
     user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/9
-    cookie: _gtid=b28e5d21aef911ea97c54661835588be5101; sessionid=rwp19w0s8rfc5f00gkw94uf7blp18p18; _gm_token=9d544b1592457296
+    cookie: _gtid=35efc805b60a11ea8209da41a8580ccd3441; sessionid=nmza460u04xgcota9aw91domag71vdbf; _gm_token=6e3d741593315178
     device_id_lanch: 860809046019934
     device_id_recive: androidid_a4dfb9b8f4852fe8
 
 launch_disp:
-  user_gender: 1
-  user_age: 35
-  counsellor_id:
-  referer: video_face_consultation
-  user_has_aesthetic_medicine: 1
-  user_target_project: "[1,2,1024]"
-  counsellor_type: 1
-  user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/9
-  cookie: _gtid=b8cecd70b14c11ea91a15a21f9a9ca6e4534; sessionid=jh1pd12fvdpfn7q478wmvkbpegmvy3c3; _gm_token=ccedf31592475400
-  device_id: androidid_a4dfb9b8f4852fe8
+  -
+    case: "派单正常流程测试"
+    user_gender: 1
+    user_age: 35
+    counsellor_id:
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    counsellor_type: 1
+    user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/10
+    cookie: _gtid=35efc805b60a11ea8209da41a8580ccd3441; sessionid=nmza460u04xgcota9aw91domag71vdbf; _gm_token=6e3d741593315178
+    device_id_lanch: 860809046019934
+    device_id_recive: androidid_a4dfb9b8f4852fe8

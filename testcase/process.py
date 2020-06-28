@@ -10,6 +10,14 @@ from face_api_test.api.base_api import BaseApi
 
 
 class Process:
+    data = BaseApi().api_load(path_setting.PROCESS_DATA)
+    # normal_process_case, normal_process_data = get_ids(data, 'normal_process')
+
+    # param = data["per_lan_envent"]
+    # param_cancel = data['cancel_perone']
+    # param_join_failed = data['join_failed']
+    param_normal_process = data['normal_process']
+    param_launch_disp = data['launch_disp']
 
     # 针对连线发起心跳流程抽离
     @classmethod
@@ -33,6 +41,7 @@ class Process:
         r = Testapi().prepare_one2one(param["user_gender"], param["user_age"], param["counsellor_id"], param["referer"],
                                       param["user_has_aesthetic_medicine"], param["user_target_project"])
         consultation_record_id = ''
+        order_no = ''
         if r["error"] == 0:
             order_no = r["data"]["order_no"]
             trace_id = BaseApi().trace_id()
@@ -46,27 +55,36 @@ class Process:
         trace_id = Testapi().trace_id()
         r = Testapi().prepare_dispatch(param["user_gender"], param["user_age"], param["referer"],
                                       param["user_has_aesthetic_medicine"], param["user_target_project"],
-                                      param["counsellor_id"], param["counsellor_type"])
+                                    param["counsellor_id"], param["counsellor_type"])
+        dispatch_task_id = ""
         if r["error"] == 1:
             print("用户存在未结束的通话")
         else:
             order_no = r["data"]["order_no"]
-            Testapi().launch_dispatch(order_no, trace_id)
+            a = Testapi().launch_dispatch(order_no, trace_id)
+            print("=============", a)
             count = 1
-            while count < 10:
-                Testapi().current_dispatch_ping()
+            while count < 30:
+                Testapi().current_dispatch_ping()  #轮询发起派单
                 time.sleep(1)
 
                 r = Testapi().current_dispatch_task_list()
+                print("00000000", r)
                 if r["data"] != []:
                     dispatch_task_id = r["data"][0]["dispatch_task_id"]
+                    print("dispatch_task_id",dispatch_task_id)
                     break
                 count += 1
             # 医生加入抢单
-            Testapi().join_dispatch(param["cookie"], dispatch_task_id)
+            data = Testapi().join_dispatch(param["cookie"], dispatch_task_id)
+            consultation_record_id = data["data"]["consultation_record_info"]["consultation_record_id"]
+            Testapi().report_event(param["user_agent"], param["cookie"], 2,
+                                   consultation_record_id, param["device_id_lanch"])
             # 用户获取派单信息
-            result = Testapi().get_current_dispatch_info()
-            consultation_record_id = result["data"]["consultation_record_info"]["consultation_record_id"]
+            Testapi().get_current_dispatch_info()
+            # print("result",result)
+            # consultation_record_id = result["data"]["consultation_record_info"]
+            # print("consultation_record_id",consultation_record_id)
         return (consultation_record_id, order_no, dispatch_task_id)
 
 
@@ -110,15 +128,7 @@ class Process:
         else:
             print("视频面诊异常")
 
-    # 模拟派单请求
-    def launch_disp(self):
-        consultation_record_id, order_no, dispatch_task_id = self.dispatch_op(self.param_launch_disp)
-        # 医生加入
-        Testapi().report_event(self.param_normal_process["user_agent"], self.param_normal_process["cookie"], 2,
-                               consultation_record_id, self.param_normal_process["device_id_recive"])
-        # 用户加入
-        Testapi().report_event("", "", 2, consultation_record_id, self.param_normal_process["device_id_recive"])
-        self.event_order_check(consultation_record_id, self.param_normal_process, 7, order_no)
+
 
 
 if __name__ == '__main__':
