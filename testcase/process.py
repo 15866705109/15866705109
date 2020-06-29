@@ -47,27 +47,35 @@ class Process:
         r = Testapi().prepare_dispatch(param["user_gender"], param["user_age"], param["referer"],
                                       param["user_has_aesthetic_medicine"], param["user_target_project"],
                                       param["counsellor_id"], param["counsellor_type"])
+        print('你猜吧',r)
+        dispatch_task_id = ""
         if r["error"] == 1:
             print("用户存在未结束的通话")
         else:
             order_no = r["data"]["order_no"]
             Testapi().launch_dispatch(order_no, trace_id)
+            print('你猜',Testapi().launch_dispatch(order_no, trace_id))
             count = 1
-            while count < 10:
-                Testapi().current_dispatch_ping()
+            while count < 5:
+                Testapi().current_dispatch_ping()    #发请求
+                print('不知道是啥',Testapi().current_dispatch_ping())
                 time.sleep(1)
 
                 r = Testapi().current_dispatch_task_list()
+                print('yuchao',r)
                 if r["data"] != []:
                     dispatch_task_id = r["data"][0]["dispatch_task_id"]
                     break
                 count += 1
+
             # 医生加入抢单
             Testapi().join_dispatch(param["cookie"], dispatch_task_id)
+            print('dispatch_task_id是',Testapi().join_dispatch(param["cookie"], dispatch_task_id))
             # 用户获取派单信息
             result = Testapi().get_current_dispatch_info()
-            consultation_record_id = result["data"]["consultation_record_info"]["consultation_record_id"]
-        return (consultation_record_id, order_no, dispatch_task_id)
+            print('获取派单',result)
+            consultation_record_id = result["data"]["consultation_record_info"]
+        return (consultation_record_id,order_no, dispatch_task_id)
 
 
 
@@ -124,6 +132,5 @@ class Process:
 if __name__ == '__main__':
     # Process().per_lan_envent()
     # Process().cancel_perone()
-    #Process().launch_disp()
+    Process().launch_disp()
     # Process().normal_process()
-    Process().dispatch_op()

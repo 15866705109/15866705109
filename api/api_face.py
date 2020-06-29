@@ -153,6 +153,7 @@ class Testapi(BaseApi):
     派单匹配成功接口，用户获取当前面诊派单接口
     '''
     def get_current_dispatch_info(self):
+
        return self.api_send(self.data["get_current_dispatch_info"])
 
     '''
@@ -181,7 +182,8 @@ class Testapi(BaseApi):
     '''
     视频面诊工作台 - 待抢面诊派单 
     '''
-    def current_dispatch_task_list(self, device_id="androidid_a4dfb9b8f4852fe8"):
+    def current_dispatch_task_list(self, device_id,cookie):
+        self.params['Cookie'] = cookie
         self.params["device_id"] = device_id
         return self.api_send(self.data["current_dispatch_task_list"])
 
@@ -278,10 +280,8 @@ class Testapi(BaseApi):
     '''
     视频面诊工作台-面诊师抢派单
     '''
-    def join_dispatch(self):
-        print(self.api_send(self.data['join_dispatch']))
     def join_dispatch(self, cookie, dispatch_task_id):
-        self.params["Cookie"] = cookie
+        self.params["cookie"] = cookie
         self.params["dispatch_task_id"] = dispatch_task_id
         return self.api_send(self.data['join_dispatch'])
 
@@ -299,7 +299,7 @@ class Testapi(BaseApi):
         return self.api_send(self.data['complaint'])
 
     '''
-    推荐带数据获取
+    推荐袋数据获取
     '''
     def get_recommended_bag(self):
         return self.api_send(self.data['get_recommended_bag'])

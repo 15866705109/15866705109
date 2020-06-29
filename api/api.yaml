@@ -37,7 +37,7 @@ login:
   data: {
     "lat": 40.00200491621516,
     "lng": 116.4873794175263,
-    "phone": 18201438948,
+    "phone": 15611737561,
     "password": 123456,
     "face_token": ""
   }
@@ -188,7 +188,7 @@ current_dispatch_task_list:
   url: /api/consultation_counsel/workbench/current_dispatch_task_list
   method: get
   headers:
-    Cookie: _gtid=b8cecd70b14c11ea91a15a21f9a9ca6e4534; sessionid=jh1pd12fvdpfn7q478wmvkbpegmvy3c3; _gm_token=ccedf31592475400
+    Cookie: _gtid=56740323b91311eaa536da41a8580ccd5685; sessionid=8q9otlcrbd3e5zxmocpakix4uefxak7o; _gm_token=3df1b71593330930
   params:
     device_id: ${device_id}
     version: 7.28.1
@@ -299,7 +299,7 @@ join_dispatch:
   method: post
   url: /api/consultation_counsel/workbench/join_dispatch
   headers:
-    Cookie: ${Cookie}
+    cookie: ${cookie}
   data:
     dispatch_task_id: ${dispatch_task_id}
 
