@@ -188,7 +188,7 @@ current_dispatch_task_list:
   url: /api/consultation_counsel/workbench/current_dispatch_task_list
   method: get
   headers:
-    Cookie: _gtid=b8cecd70b14c11ea91a15a21f9a9ca6e4534; sessionid=jh1pd12fvdpfn7q478wmvkbpegmvy3c3; _gm_token=ccedf31592475400
+    Cookie: ${Cookie}
   params:
     device_id: ${device_id}
     version: 7.28.1
