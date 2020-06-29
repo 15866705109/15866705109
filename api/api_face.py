@@ -182,8 +182,9 @@ class Testapi(BaseApi):
     '''
     视频面诊工作台 - 待抢面诊派单 
     '''
-    def current_dispatch_task_list(self, device_id,cookie):
-        self.params['Cookie'] = cookie
+
+    def current_dispatch_task_list(self, cookie, device_id="androidid_a4dfb9b8f4852fe8"):
+        self.params["Cookie"] = cookie
         self.params["device_id"] = device_id
         return self.api_send(self.data["current_dispatch_task_list"])
 
