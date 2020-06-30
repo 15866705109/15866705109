@@ -67,8 +67,6 @@ consultation_apply_form_info:
     record_type: '@'
 
 
-
-
 join_dispatch:
   -
     case: '派单拿参数'
@@ -79,7 +77,10 @@ join_dispatch:
     counsellor_id:
     counsellor_type: 1
     referer: video_face_consultation
-    cookie: _gtid=56740323b91311eaa536da41a8580ccd5685; sessionid=8q9otlcrbd3e5zxmocpakix4uefxak7o; _gm_token=3df1b71593330930s
+    user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/10
+    cookie: sessionid=1ki2e9rarr46vwasmztwwd4aojghuyoj; sessionid=1ki2e9rarr46vwasmztwwd4aojghuyoj; _gtid=746bb800bab111ea9f299eac69b439316682; _gm_token=4f67981593516856
+    device_id_lanch: 860809046019934
+    device_id_recive: androidid_a4dfb9b8f4852fe8
 
 
 

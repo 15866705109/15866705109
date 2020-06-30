@@ -174,10 +174,6 @@ cancel_dispatch:
   data:
     trigger_source: ${trigger_source}
 
-
-
-
-
 home:
   url: /api/consultation_counsel/workbench/home
   method: get
@@ -188,7 +184,7 @@ current_dispatch_task_list:
   url: /api/consultation_counsel/workbench/current_dispatch_task_list
   method: get
   headers:
-    Cookie: _gtid=56740323b91311eaa536da41a8580ccd5685; sessionid=8q9otlcrbd3e5zxmocpakix4uefxak7o; _gm_token=3df1b71593330930
+    Cookie: ${Cookie}
   params:
     device_id: ${device_id}
     version: 7.28.1
@@ -299,7 +295,7 @@ join_dispatch:
   method: post
   url: /api/consultation_counsel/workbench/join_dispatch
   headers:
-    cookie: ${cookie}
+    Cookie: ${Cookie}
   data:
     dispatch_task_id: ${dispatch_task_id}
 

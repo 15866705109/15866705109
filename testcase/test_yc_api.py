@@ -136,6 +136,11 @@ class Test_api:
     def test_join_dispatch(self, param):
         consultation_record_id, order_no, dispatch_task_id = Process().dispatch_op(param)
         print('111111111', dispatch_task_id)
+        Testapi().report_event(param["user_agent"], param["cookie"], 8,
+                               consultation_record_id, param["device_id_lanch"])
+        # 用户加入
+        Testapi().report_event("", "", 2, consultation_record_id, param["device_id_recive"])
+        Process().event_order_check(consultation_record_id, param, 7, order_no)
         # a = Testapi.join_dispatch(param['cookie'],dispatch_task_id)
         # print(a,00000)
 
