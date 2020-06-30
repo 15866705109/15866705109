@@ -37,7 +37,9 @@ class BaseApi:
     def api_load(self, path):
         return self.yaml_load(path)
 
-    def jsonpath(self, path, **kwargs):
+    def jsonpath(self, path, r=None, **kwargs):
+        if r is None:
+            r = self.r.json()
         return jsonpath(r, path)
 
     def get_cookie(self, req: dict):

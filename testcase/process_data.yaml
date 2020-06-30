@@ -10,7 +10,10 @@ dream401: &dream401
 #  counsellor_id: a261175bc0b14d8bb0b316e66cab03fa
 #wangyibo: &wangyibo
 #  counsellor_id: ea26665bca9f49e8b9ee00f06f96280b
-
+cookie_merchant: &cookie_merchant
+  cookie: _gtid=35efc805b60a11ea8209da41a8580ccd3441; sessionid=nmza460u04xgcota9aw91domag71vdbf; _gm_token=6e3d741593315178
+cookie_consult: &cookie_consult
+  cookie:
 per_lan_envent:
   user_gender: 1
   user_age: 23
@@ -51,12 +54,12 @@ normal_process:
     case: "1V1正常流程测试"
     user_gender: 1
     user_age: 35
-    <<: *dream401
+    <<: *liuchunjun
     referer: video_face_consultation
     user_has_aesthetic_medicine: 1
     user_target_project: "[1,2,1024]"
     user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/9
-    cookie: _gtid=35efc805b60a11ea8209da41a8580ccd3441; sessionid=nmza460u04xgcota9aw91domag71vdbf; _gm_token=6e3d741593315178
+    <<: *cookie_merchant
     device_id_lanch: 860809046019934
     device_id_recive: androidid_a4dfb9b8f4852fe8
 
@@ -71,6 +74,6 @@ launch_disp:
     user_target_project: "[1,2,1024]"
     counsellor_type: 1
     user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/10
-    cookie: _gtid=35efc805b60a11ea8209da41a8580ccd3441; sessionid=nmza460u04xgcota9aw91domag71vdbf; _gm_token=6e3d741593315178
+    <<: *cookie_merchant
     device_id_lanch: 860809046019934
     device_id_recive: androidid_a4dfb9b8f4852fe8
