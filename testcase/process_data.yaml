@@ -1,8 +1,79 @@
+liuchunjun: &liuchunjun
+  counsellor_id: 0505a26e42074dd081ca3528299bd18a
+#pengpeng: &pengpeng
+#  counsellor_id: 0783bb9f454a41efa03fd1564df3e957
+dream401: &dream401
+  counsellor_id: e78c50f0579311ea8e7b623ce5e68eba
+#nicheng1234: &nicheng1234
+#  counsellor_id: bca0e744df3f461bb7815bb7618f29b1
+#yuxinpinting: &yuxinpinting
+#  counsellor_id: a261175bc0b14d8bb0b316e66cab03fa
+#wangyibo: &wangyibo
+#  counsellor_id: ea26665bca9f49e8b9ee00f06f96280b
+cookie_merchant: &cookie_merchant
+  cookie: _gtid=35efc805b60a11ea8209da41a8580ccd3441; sessionid=nmza460u04xgcota9aw91domag71vdbf; _gm_token=6e3d741593315178
+cookie_consult: &cookie_consult
+  cookie:
 per_lan_envent:
   user_gender: 1
   user_age: 23
-  counsellor_id: d4b12886a1ba4c6794b738799db6d4fe #dream401医生
+  <<: *liuchunjun
   referer: video_face_consultation
   user_has_aesthetic_medicine: 1
   user_target_project: "[1,2,1024]"
+  event_type: 2
 
+cancel_perone:
+  -
+    case: "用户发起1V1，医生接通前用户挂断"
+    user_gender: 2
+    user_age: 27
+    <<: *liuchunjun
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    event_type: 2
+    status: 3
+    finish_reason: 2
+
+join_failed:
+  -
+    case: "用户发起视频连线，用户加入失败"
+    user_gender: 2
+    user_age: 27
+    <<: *dream401
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    event_type: 3
+    status: 0
+    finish_reason: ''
+
+normal_process:
+  -
+    case: "1V1正常流程测试"
+    user_gender: 1
+    user_age: 35
+    <<: *liuchunjun
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/9
+    <<: *cookie_merchant
+    device_id_lanch: 860809046019934
+    device_id_recive: androidid_a4dfb9b8f4852fe8
+
+launch_disp:
+  -
+    case: "派单正常流程测试"
+    user_gender: 1
+    user_age: 35
+    counsellor_id:
+    referer: video_face_consultation
+    user_has_aesthetic_medicine: 1
+    user_target_project: "[1,2,1024]"
+    counsellor_type: 1
+    user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/10
+    <<: *cookie_merchant
+    device_id_lanch: 860809046019934
+    device_id_recive: androidid_a4dfb9b8f4852fe8

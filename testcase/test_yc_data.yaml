@@ -1,65 +1,88 @@
 consultation_param:
   -
-    case: '测试feed流tab全部'
-    tab_id: 0
-    page: 1
-    version: 7.26.3
-
-  -
-    case: '测试feed流tab眼部'
+    case: '第一页'
     tab_id: 1
     page: 1
     version: 7.26.3
-#  -
-#      case: '测试feed流tab鼻部'
-#      tab_id: 2
-#      page: 1
-#      version: 7.26.3
 
-#  -
-#      case: '测试feed流tab自体脂肪'
-#      tab_id: 3
-#      page: 1
-#      version: 7.26.3
-#  -
-#      case: '测试feed流tab面部轮廓'
-#      tab_id: 4
-#      page: 1
-#      version: 7.26.3
-#  -
-#      case: '测试feed流tab微整形'
-#      tab_id: 5
-#      page: 1
-#      version: 7.26.3
-#  -
-#      case: '测试feed流tab激光美肤'
-#      tab_id: 6
-#      page: 1
-#      version: 7.26.3
-#  -
-#      case: '测试feed流tab瘦身塑形'
-#      tab_id: 7
-#      page: 1
-#      version: 7.26.3
-#  -
-#      case: '测试feed流tab胸部'
-#      tab_id: 8
-#      page: 1
-#      version: 7.26.3
-#
-#  -
-#      case: '测试feed流tab口腔齿科'
-#      tab_id: 9
-#      page: 1
-#      version: 7.26.3
-#  -
-#      case: '测试feed流tab毛发'
-#      tab_id: 10
-#      page: 1
-#      version: 7.26.3
+  -
+    case: '第二页'
+    tab_id: 1
+    page: 2
+    version: 7.26.3
+  -
+    case: '传入str'
+    tab_id: str
+    page: str
+    version: 7.26.3
+
+
+  -
+      case: '传空'
+      tab_id:
+      page:
+      version: 7.26.3
+
+
 
 recommend_counsellors:
   -
-    case: '全部列表'
+    case: '正常传参'
     version: 7.26.3
+  -
+    case: '传空'
+    version:
+  -
+    case: '传str'
+    version: 你ni猜22@
+
+
+
+
+customer:
+  -
+    case: '是否新用户1'
+    counsellor_id: 0505a26e42074dd081ca3528299bd18a
+    doctor_id: ''
+  -
+    case: '是否新用户2'
+    counsellor_id: ''
+    doctor_id: ''
+
+consultation_apply_form_info:
+  -
+    case: '正常传参'
+    doctor_id: ''
+    counsellor_id: 0505a26e42074dd081ca3528299bd18a
+    record_type: 1
+  -
+    case: '传空'
+    doctor_id:
+    counsellor_id:
+    record_type:
+  -
+    case: '传str '
+    doctor_id:
+    counsellor_id:
+    record_type: '@'
+
+
+join_dispatch:
+  -
+    case: '派单拿参数'
+    user_gender: 1
+    user_age: 28
+    user_has_aesthetic_medicine: 0
+    user_target_project: '[1,3,4]'
+    counsellor_id:
+    counsellor_type: 1
+    referer: video_face_consultation
+    user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/10
+    cookie: sessionid=1ki2e9rarr46vwasmztwwd4aojghuyoj; sessionid=1ki2e9rarr46vwasmztwwd4aojghuyoj; _gtid=746bb800bab111ea9f299eac69b439316682; _gm_token=4f67981593516856
+    device_id_lanch: 860809046019934
+    device_id_recive: androidid_a4dfb9b8f4852fe8
+
+
+
+
 

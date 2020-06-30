@@ -1,3 +1,24 @@
+wangshaoguo: &wangshaoguo
+  counsellor_id: b693bb3856b611eaac203c15c2e151ea   #测下线
+yudi: &yudi
+  counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+mengyingruixue: &mengyingruixue
+  counsellor_id: 59d8adc4356a48278eb308c40704fb50  #测禁用
+#liuchunjun: &liuchunjun
+#  counsellor_id: 0505a26e42074dd081ca3528299bd18a
+#pengpeng: &pengpeng
+#  counsellor_id: 0783bb9f454a41efa03fd1564df3e957
+#dream401: &dream401
+#  counsellor_id: e78c50f0579311ea8e7b623ce5e68eba
+#nicheng1234: &nicheng1234
+#  counsellor_id: bca0e744df3f461bb7815bb7618f29b1
+#yuxinpinting: &yuxinpinting
+#  counsellor_id: a261175bc0b14d8bb0b316e66cab03fa
+#wangyibo: &wangyibo
+#  counsellor_id: ea26665bca9f49e8b9ee00f06f96280b
+
+
+
 consultation_orders_param:
   -
     case: "正常请求参数测试202004-1"
@@ -110,7 +131,7 @@ prepare_one2one_param:
     case: "测试1V1正确传参"
     user_gender: 1
     user_age: 23
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: video_face_consultation
     user_has_aesthetic_medicine: 1
     user_target_project: "[1,2,1024]"
@@ -120,7 +141,7 @@ prepare_one2one_param:
     case: "测试1V1正确传参conversation_detail"
     user_gender: 2
     user_age: 28
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: conversation_detail
     user_has_aesthetic_medicine: 0
     user_target_project: "[1,2,1024]"
@@ -130,7 +151,7 @@ prepare_one2one_param:
     case: "测试1V1正确传参expert_detail"
     user_gender: 2
     user_age: 28
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 0
     user_target_project: "[1,2,1024]"
@@ -140,7 +161,7 @@ prepare_one2one_param:
     case: "1V1 性别错误传3"
     user_gender: 3
     user_age: 24
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 0
     user_target_project: "[1,2,1024]"
@@ -150,7 +171,7 @@ prepare_one2one_param:
     case: "1V1 性别错误传-1"
     user_gender: -1
     user_age: 24
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 0
     user_target_project: "[1,2,1024]"
@@ -160,7 +181,7 @@ prepare_one2one_param:
     case: "1V1 性别错误传0"
     user_gender: 0
     user_age: 24
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 0
     user_target_project: "[1,2,1024]"
@@ -170,7 +191,7 @@ prepare_one2one_param:
     case: "1V1 年龄类型传错str"
     user_gender: 1
     user_age: str
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 0
     user_target_project: "[1,2,1024]"
@@ -180,7 +201,7 @@ prepare_one2one_param:
     case: "1V1 年龄传0"
     user_gender: 2
     user_age: 0
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[1,2,1024]"
@@ -190,7 +211,7 @@ prepare_one2one_param:
     case: "1V1 年龄传-1"
     user_gender: 2
     user_age: -1
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[1,2,1024]"
@@ -200,7 +221,7 @@ prepare_one2one_param:
     case: "1V1 年龄传入100"
     user_gender: 1
     user_age: 100
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 0
     user_target_project: "[1,2,1024]"
@@ -210,7 +231,7 @@ prepare_one2one_param:
     case: "1V1 年龄传入101"
     user_gender: 1
     user_age: 101
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 0
     user_target_project: "[1,2,1024]"
@@ -230,7 +251,7 @@ prepare_one2one_param:
     case: "1V1 对方已经下线"
     user_gender: 2
     user_age: 0
-    counsellor_id: b693bb3856b611eaac203c15c2e151ea
+    <<: *wangshaoguo
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[1,2,1024]"
@@ -240,7 +261,7 @@ prepare_one2one_param:
     case: "1V1 referer传参非3种类型可正常请求"
     user_gender: 2
     user_age: 0
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: referer
     user_has_aesthetic_medicine: 1
     user_target_project: "[1,2,1024]"
@@ -250,7 +271,7 @@ prepare_one2one_param:
     case: "1V1 user_target_project参数为空"
     user_gender: 2
     user_age: 0
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: referer
     user_has_aesthetic_medicine: 1
     user_target_project: "[]"
@@ -260,7 +281,7 @@ prepare_one2one_param:
     case: "1V1 user_target_project参数不在范围内"
     user_gender: 2
     user_age: 0
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: referer
     user_has_aesthetic_medicine: 1
     user_target_project: "[0,1,2,3,4,-1]"
@@ -270,7 +291,7 @@ prepare_one2one_param:
     case: "1V1 user_has_aesthetic_medicine参数为0"
     user_gender: 2
     user_age: 0
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: referer
     user_has_aesthetic_medicine: 0
     user_target_project: "[0,1,2]"
@@ -280,29 +301,17 @@ prepare_one2one_param:
     case: "1V1 user_has_aesthetic_medicine参数为-1"
     user_gender: 2
     user_age: 0
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: referer
     user_has_aesthetic_medicine: -1
     user_target_project: "[0,1,2]"
     assert: 2
 
-
-  -
-    case: "对方已下线"
-    user_gender: 1
-    user_age: 24
-    counsellor_id: e4277b5ebb2b44ed8286188c4a6e8795
-    referer: expert_detail
-    user_has_aesthetic_medicine: 1
-    user_target_project: "[0,1,2]"
-    trace_id: ""
-    assert: "对方已下线，可以关注并私信他哟～"
-
   -
     case: "医生不存在,会报错"
     user_gender: 1
     user_age: 24
-    counsellor_id: e4277b5ebb2b44ed8286188c4a6e8789
+    counsellor_id: e4277b5ebb2b44ed8286188c4a6e
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[0,1,2]"
@@ -312,7 +321,7 @@ prepare_one2one_param:
     case: "用户存在未结束的通话"
     user_gender: 1
     user_age: 24
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[0,1,2]"
@@ -323,7 +332,7 @@ prepare_one2one_param:
     case: "当前面诊账号被禁止使用视频面诊"
     user_gender: 1
     user_age: 24
-    counsellor_id: c4233eecf19942b1b43f044002596f99
+    <<: *mengyingruixue
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[0,1,2]"
@@ -336,7 +345,7 @@ launch_one2one:
     case: "launch_one2one订单测试"   #第一case和第二case可测试perone_to的面诊中的情况
     user_gender: 2
     user_age: 1
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[0,1,2]"
@@ -346,7 +355,7 @@ launch_one2one:
     case: "prepare_one2one的面诊中case"
     user_gender: 1
     user_age: 24
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[0,1,2]"
@@ -357,7 +366,7 @@ launch_one2one:
     case: "trace_id为空的情况"
     user_gender: 1
     user_age: 24
-    counsellor_id: d4b12886a1ba4c6794b738799db6d4fe
+    <<: *yudi
     referer: expert_detail
     user_has_aesthetic_medicine: 1
     user_target_project: "[0,1,2]"

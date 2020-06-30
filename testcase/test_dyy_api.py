@@ -176,12 +176,14 @@ class Test_api:
         print(r)
     #todo:需要模拟流程
     def test_order_info(self):
-        r = Testapi().order_info()
-        print(r)
+        pass
+        # r = Testapi().order_info()
+        # print(r)
 
     def test_order_check(self):
-        r = Testapi().order_check()
-        print(r)
+        pass
+        # r = Testapi().order_check()
+        # print(r)
 
 
     @pytest.mark.parametrize("param", cancel_dispatch_data, ids=cancel_dispatch_case)
@@ -208,13 +210,9 @@ class Test_api:
         print(r)
 
     def test_launch_dispatch(self):
-        r = Testapi().launch_dispatch()
-        print(r)
-
-    # todo:简单写
-    def test_current_dispatch_task_list(self):
-        r = Testapi().current_dispatch_task_list()
-        assert r["error"] == 0
+        pass
+        # r = Testapi().launch_dispatch()
+        # print(r)
 
     #todo:简单写
     def test_current_dispatch_task_count(self):

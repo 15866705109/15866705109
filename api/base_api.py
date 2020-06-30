@@ -23,7 +23,7 @@ class BaseApi:
     params = {}
 
     @classmethod
-    def format(cls, r):
+    def format(cls,r):
         cls.r = r
         print(json.dumps(json.loads(r.text), indent=2, ensure_ascii=False))
 
@@ -37,12 +37,15 @@ class BaseApi:
     def api_load(self, path):
         return self.yaml_load(path)
 
-    def jsonpath(self, path, **kwargs):
+    def jsonpath(self, path, r=None, **kwargs):
+        if r is None:
+            r = self.r.json()
         return jsonpath(r, path)
 
     def get_cookie(self, req: dict):
 
         host = self.api_load(path_setting.HOSTYAML_CONFIG)
+        print(host)
         r = requests.request(
             req['method'],
             url=host['merchant_host']['url']+req['url'],
@@ -51,7 +54,6 @@ class BaseApi:
             data=req['data'],
             json=req['json']
         )
-        # print(r.cookies)
         dict={}
         for i in r.cookies:
             dict[i.name]=i.value
@@ -83,12 +85,19 @@ class BaseApi:
             raw = raw.replace(f"${{{key}}}", repr(value))
         req = yaml.safe_load(raw)
 
-        headers = self.read_header()
+        print('------',req.get('headers'))
+        hd = req.get('headers')
+        if hd == None:
+            user_headers = self.read_header()
+        elif hd["Cookie"]:
+            user_headers = req.get('headers')
+        else:
+            user_headers = self.read_header()
         r = requests.request(
             req['method'],
             url=host['merchant_host']['url'] + req['url'],
             params=req.get('params'),
-            headers=headers,
+            headers=user_headers,
             data=req.get('data'),
             json=req.get('json')
         )
@@ -101,5 +110,6 @@ class BaseApi:
 
 
 if __name__ == '__main__':
-    # BaseApi().api_load("../api/api.yaml")
-    print(BaseApi().trace_id())
+    BaseApi().api_load("../api/api.yaml")
+    #print(BaseApi().trace_id())
+    BaseApi().read_header()

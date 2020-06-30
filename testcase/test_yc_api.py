@@ -7,45 +7,80 @@ from face_api_test.api.api_face import Testapi
 from face_api_test.api.base_api import BaseApi
 from face_api_test.database.db_manage import DB
 from face_api_test.testcase.ids_list import get_ids
+from face_api_test.testcase.process import Process
+
 
 
 class Test_api:
-    yc_data= BaseApi().api_load(path_setting.YUCHAO_TEST_DATA) #拿到ias里的返回值
-    orders_param_case, orders_param_data = get_ids(yc_data, 'recommend_counsellors')
-    orders_param_case, orders_param_data = get_ids(yc_data, 'consultation_param') #拿到yu_yaml文件里的传参
+    # 拿到ias里的返回值
+    yc_data= BaseApi().api_load(path_setting.YUCHAO_TEST_DATA)
+    yc_data1 = BaseApi().api_load(path_setting.YUCHAO_TEST_DATA)
+    # 拿到path_setting文件里的传参
+    orders_counsellors_case, orders_counsellors_data = get_ids(yc_data, 'recommend_counsellors')
+    orders_param_case, orders_param_data = get_ids(yc_data, 'consultation_param')
+    orders_customer_case,orders_customer_data = get_ids(yc_data,'customer')
+    orders_consultation_apply_form_info_case , orders_consultation_apply_form_info_data = get_ids(yc_data,'consultation_apply_form_info')
+
+    #
+    orders_join_dispatch_case,orders_join_dispatch_data = get_ids(yc_data,'join_dispatch')
+
+
+
 
     @classmethod
     def setup_class(cls):
         cls.login = Testapi().login()
     #面诊推荐位
-    @pytest.mark.parametrize("param", orders_param_data, ids=orders_param_case)  # 接收参数
+    @pytest.mark.parametrize("param", orders_counsellors_data, ids=orders_counsellors_case)  # 接收参数
     def test_recommend_counsellors(self,param):
-        a = Testapi().recommend_counsellors(param['version'])['data']['tabs']  #截取
-        name = jsonpath.jsonpath(a,'$..name')
-        print(name)
-        b = Testapi().recommend_counsellors(param['version'])#截取
 
-        assert b['error_extra'] == None
+        #a = Testapi().recommend_counsellors(param['version'])['data']['tabs']  #截取
+        a = Testapi().recommend_counsellors(param['version'])['data']['recommends_counsellors']#截取
+        print(a)
+        list = []  #接通率大于10
+        for i in a:
+            user = i['name']
+            rew = i['connect_rate']
+            if rew >= '10' and rew !='':
+                list.append({user: rew})
+        print(list)
+
+
 
     #feed流
     @pytest.mark.parametrize("param", orders_param_data, ids=orders_param_case) #接收参数
     def test_counsellors(self,param):
         r = Testapi().counsellors(param["tab_id"], param["page"], param["version"])#接口里的值赋值到r
         a = r['data']
-        good = jmespath.search("counsellors[*].{Name:name,Good_at:good_at}",a) #拿到接口里医生对应的good_at
-        print(good)
-        b = r['data']['counsellors'] #每个tab下所有的值
-        print(b)
-        #good_at = jsonpath.jsonpath(r,'$..good_at')#拿到接口里所有的goodat
-        #a = " ".join(good) #转成str
-        for  i in good:
-            if i not in b:
-                print('包含')
-            else:
-                print('不包含')
-
-
-
+        print('测试传参',a)
+        #assistant = jmespath.seiinarch("counsellors[*].{Name:name,assistant:is_assistant}",a) #拿到接口里医生对应的good_at
+        connect_rate = (jmespath.search("counsellors[*].{Name:name,connect_rate:connect_rate}",a))
+        counsellorslist = []  #判断接通率
+        for i in connect_rate:
+            uesr = i['Name']
+            rew = i['connect_rate']
+            if rew > '50' and rew != '' :
+                counsellorslist.append({uesr: rew})
+        print('接通率大于50的医生是:',counsellorslist)
+        like_rate = (jmespath.search("counsellors[*].{Name:name,like_rate:like_rate}",a)) #拿到接口里的好评率
+        #print(like_rate)
+        like_rate1 = []   #判断好评率
+        for i in like_rate:
+            user1 = i['Name']
+            rew1 = i['like_rate']
+            if rew1 > '50':
+                like_rate1.append({user1:rew1})
+        print('好评率大于50的医生是:',like_rate1)
+        # 是否在线
+        status = (jmespath.search("counsellors[*].{Name:name,status:status}",a))
+        print(status)
+        Statuslist = []
+        for i in status:
+            user1 = i['Name']
+            status1 = i['status']
+            if status1 == 2:
+                Statuslist.append({user1:status1})
+        print('在线的面诊时是',Statuslist)
 
 
         userid = jsonpath.jsonpath(r,"$..user_id.") #拿到接口里所有的userid
@@ -55,33 +90,88 @@ class Test_api:
 
 
 
-    def test_block_info(self):
+    def test_block_info(self):  #查看封禁信息
         a = Testapi().block_info()['data']['block_info']
         print(a)
         assert a['status'] == 0
-    def test_customer(self):
-        a = Testapi().customer()['data']
+
+    @pytest.mark.parametrize("param", orders_customer_data, ids=orders_customer_case)  # 接收参数
+    def test_customer(self,param):  #没找到传参怎么判断新老用户
+        a = Testapi().customer(param['counsellor_id'],param['doctor_id'])['data']
         assert a['has_record'] == True
+        if a['has_record'] == True:
+            print('新用户')
+        else:
+            print('老用户')
+
+
+    #面诊师表单获取上一次信息接口
+    @pytest.mark.parametrize('param',orders_consultation_apply_form_info_data, ids=orders_consultation_apply_form_info_case)
+    def test_consultation_apply_form_info(self,param):
+        a = Testapi().consultation_apply_form_info(param['doctor_id'],param['counsellor_id'],param['record_type'])
         print(a)
 
-    def test_consultation_apply_form_info(self):
-        a = Testapi().consultation_apply_form_info()
 
-        print(a)
 
+    #开启面诊
     def test_start_consultation(self):
         a = Testapi().start_consultation()
         print(a)
 
+    #关闭面诊vi
     def test_stop_consultation(self):
         a = Testapi().stop_consultation()
         print(a)
 
+
+    #已抢面诊派单列表
     def test_finished_dispatch_task_list(self):
         a = Testapi().finished_dispatch_task_list()
         print(a)
+        assert a['error_extra'] == None
 
-    def test_join_dispatch(self):
-        a = Testapi().join_dispatch()
+
+    #轮询抢单列表
+    @pytest.mark.parametrize("param", orders_join_dispatch_data, ids = orders_join_dispatch_case)
+    def test_join_dispatch(self, param):
+        consultation_record_id, order_no, dispatch_task_id = Process().dispatch_op(param)
+        print('111111111', dispatch_task_id)
+        Testapi().report_event(param["user_agent"], param["cookie"], 8,
+                               consultation_record_id, param["device_id_lanch"])
+        # 用户加入
+        Testapi().report_event("", "", 2, consultation_record_id, param["device_id_recive"])
+        Process().event_order_check(consultation_record_id, param, 7, order_no)
+        # a = Testapi.join_dispatch(param['cookie'],dispatch_task_id)
+        # print(a,00000)
+
+
+
+    # 打星评价
+    def test_evaluate_items(self):
+        a = Testapi().evaluate_items()
         print(a)
 
+    #投诉意见
+    def complaint(self):   #
+        a = Testapi.complaint()
+        print(a)
+
+
+    #推荐袋数据获取
+    def get_recommended_bag(self):
+        a =  Testapi.get_recommended_bag()
+
+    #添加推荐袋
+
+    def add_recommended_bag(self):
+        a = Testapi.add_recommended_bag()
+
+    #推荐袋搜索
+
+    def search_service(self):
+        a = Testapi.search_service()
+
+    #删除推荐袋
+
+    def delete_recommended_bag(self):
+        a = Testapi.delete_recommended_bag()
