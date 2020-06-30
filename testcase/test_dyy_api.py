@@ -214,11 +214,6 @@ class Test_api:
         # r = Testapi().launch_dispatch()
         # print(r)
 
-    # todo:简单写
-    def test_current_dispatch_task_list(self):
-        r = Testapi().current_dispatch_task_list()
-        assert r["error"] == 0
-
     #todo:简单写
     def test_current_dispatch_task_count(self):
         r = Testapi().current_dispatch_task_count()

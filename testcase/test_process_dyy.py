@@ -49,4 +49,3 @@ class TestProcess:
         # 用户加入
         Testapi().report_event("", "", 2, consultation_record_id, param["device_id_recive"])
         Process().event_order_check(consultation_record_id, param, 7, order_no)
-
