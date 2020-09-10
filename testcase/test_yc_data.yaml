@@ -41,13 +41,18 @@ recommend_counsellors:
 
 customer:
   -
-    case: '是否新用户1'
-    counsellor_id: 0505a26e42074dd081ca3528299bd18a
-    doctor_id: ''
-  -
-    case: '是否新用户2'
+    case: '新老用不传参'
     counsellor_id: ''
     doctor_id: ''
+  -
+    case: '新老用户传特殊符号'
+    counsellor_id: '@@@'
+    doctor_id: '￥#'
+  -
+    case: '传字符串'
+    counsellor_id: '543asd'
+    doctor_id: 'asd43232'
+
 
 consultation_apply_form_info:
   -
@@ -78,8 +83,7 @@ join_dispatch:
     counsellor_type: 1
     referer: video_face_consultation
     user_agent: com.wanmeizhensuo.zhensuo/1.0 AsyncHttpClient/1.4.5 Android/10
-    cookie: sessionid=1ki2e9rarr46vwasmztwwd4aojghuyoj; sessionid=1ki2e9rarr46vwasmztwwd4aojghuyoj; _gtid=746bb800bab111ea9f299eac69b439316682; _gm_token=4f67981593516856
-    device_id_lanch: 860809046019934
+    cookie: _gtid=10e83905eb5b11ea9d2a2ed41226d47a5801; sessionid=kg1n64agv1l8fa9e03sbp3m60df6nbbi; _gm_token=7f89ab1598861200
     device_id_recive: androidid_a4dfb9b8f4852fe8
 
 

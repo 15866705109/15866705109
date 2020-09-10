@@ -20,7 +20,7 @@ class DB:
     # 连接数据库
     def get_conn(self):
         try:
-            if self.host["merchant_host"]["url"] == "http://backend.paas-consult.env":
+            if self.host["merchant_host"]["url"] == "http://backend.paas-merchant.env":
                 conn = pymysql.connect(**self.data["consult"])
             else:
                 conn = pymysql.connect(**self.data["merchant"])
@@ -61,4 +61,4 @@ if __name__ == '__main__':
    # a,b=DB().getFirstAndLastDay(2020,4)
    # print(a,b)
    #  DB().get_conn()
-    DB().query_db("select * from consultation_counsellor where id ='00005924604511e5a2a200163e004883'")
+    DB().query_db("SELECT * FROM consultation_order")

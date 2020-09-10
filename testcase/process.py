@@ -45,6 +45,7 @@ class Process:
     @classmethod
     def dispatch_op(self, param):
         trace_id = Testapi().trace_id()
+        print('4321343',trace_id)
         r = Testapi().prepare_dispatch(param["user_gender"], param["user_age"], param["referer"],
                                       param["user_has_aesthetic_medicine"], param["user_target_project"],
                                     param["counsellor_id"], param["counsellor_type"])
@@ -55,11 +56,12 @@ class Process:
             order_no = r["data"]["order_no"]
             Testapi().launch_dispatch(order_no, trace_id)
             count = 1
-            while count < 30:
+            while count < 10:
                 Testapi().current_dispatch_ping()  #轮询发起派单
                 time.sleep(1)
 
                 r = Testapi().current_dispatch_task_list(param["cookie"])
+                print('报错',r)
                 if r["data"] != []:
                     dispatch_task_id = r["data"][0]["dispatch_task_id"]
                     print("dispatch_task_id",dispatch_task_id)

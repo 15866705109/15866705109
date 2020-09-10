@@ -1,6 +1,6 @@
 consult:
-  host: bj-cdb-8fjm4voq.sql.tencentcdb.com
-  port: 62106
+  host: bj-cdb-6slgqwlc.sql.tencentcdb.com
+  port: 62120
   user: work
   password: Gengmei1
   db: diagnosis
@@ -8,8 +8,8 @@ consult:
   cursorclass: pymysql.cursors.DictCursor
 
 merchant:
-  host: bj-cdb-8fjm4voq.sql.tencentcdb.com
-  port: 62106
+  host: bj-cdb-6slgqwlc.sql.tencentcdb.com
+  port: 62120
   user: work
   password: Gengmei1
   db: diagnosis2

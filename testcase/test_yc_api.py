@@ -82,12 +82,10 @@ class Test_api:
                 Statuslist.append({user1:status1})
         print('在线的面诊时是',Statuslist)
 
-
         userid = jsonpath.jsonpath(r,"$..user_id.") #拿到接口里所有的userid
-        # sql = "SELECT good_at FROM consultation_counsellor WHERE user_id IN {}".format(tuple(userid))
-        # a = DB().query_db(sql)
-        # print("999999",a[0]["good_at"])
-
+        sql = "SELECT good_at FROM consultation_counsellor WHERE user_id IN {}".format(tuple(userid))
+        a = DB().query_db(sql)
+        print("999999",a[0]["good_at"])
 
 
     def test_block_info(self):  #查看封禁信息
@@ -96,32 +94,37 @@ class Test_api:
         assert a['status'] == 0
 
     @pytest.mark.parametrize("param", orders_customer_data, ids=orders_customer_case)  # 接收参数
-    def test_customer(self,param):  #没找到传参怎么判断新老用户
+    def test_customer(self,param):
         a = Testapi().customer(param['counsellor_id'],param['doctor_id'])['data']
+        print(a)
         assert a['has_record'] == True
-        if a['has_record'] == True:
+        if a['has_record'] == True and a['counsellor_type'] == 1:
             print('新用户')
-        else:
+        elif a['has_record'] == False and a['counsellor_type'] == -1:
             print('老用户')
+        elif a['counsellor_type'] == None:
+            print('传参错误')
 
 
     #面诊师表单获取上一次信息接口
     @pytest.mark.parametrize('param',orders_consultation_apply_form_info_data, ids=orders_consultation_apply_form_info_case)
     def test_consultation_apply_form_info(self,param):
         a = Testapi().consultation_apply_form_info(param['doctor_id'],param['counsellor_id'],param['record_type'])
+        assert a['error'] == 0
         print(a)
-
 
 
     #开启面诊
     def test_start_consultation(self):
         a = Testapi().start_consultation()
-        print(a)
+        if a['error_code'] == -1:
+            print('当前医生已下线，无法使用视频面诊')
 
-    #关闭面诊vi
+    #关闭面诊
     def test_stop_consultation(self):
         a = Testapi().stop_consultation()
-        print(a)
+        if a['error_code'] == -1:
+            print('当前医生已下线，无法使用视频面诊')
 
 
     #已抢面诊派单列表
@@ -141,7 +144,7 @@ class Test_api:
         # 用户加入
         Testapi().report_event("", "", 2, consultation_record_id, param["device_id_recive"])
         Process().event_order_check(consultation_record_id, param, 7, order_no)
-        # a = Testapi.join_dispatch(param['cookie'],dispatch_task_id)
+        # a = Tgestapi.join_dispatch(param['cookie'],dispatch_task_id)
         # print(a,00000)
 
 
