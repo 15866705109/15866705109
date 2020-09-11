@@ -14,6 +14,8 @@ cookie_merchant: &cookie_merchant
   cookie: _gtid=10e83905eb5b11ea9d2a2ed41226d47a5801; sessionid=kg1n64agv1l8fa9e03sbp3m60df6nbbi; _gm_token=7f89ab1598861200
 cookie_consult: &cookie_consult
   cookie:
+
+
 per_lan_envent:
   user_gender: 1
   user_age: 23
