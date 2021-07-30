@@ -22,6 +22,7 @@ class Testapi(BaseApi):
         self.params["page"] = page
         return self.api_send(self.data["test_consultation_orders"])
     '''
+    
     通过此接口获取登录用户的counselor_id
     '''
     def personal_center(self):
@@ -41,7 +42,6 @@ class Testapi(BaseApi):
         r = self.api_send(self.data["login"])
         user_id = r["data"]["user_id"]
         return user_id
-
     '''
     视频面诊1V1发起接口
     '''

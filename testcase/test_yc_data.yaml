@@ -18,10 +18,10 @@ consultation_param:
 
 
   -
-      case: '传空'
-      tab_id:
-      page:
-      version: 7.26.3
+    case: '传空'
+    tab_id:
+    page:
+    version: 7.26.3
 
 
 

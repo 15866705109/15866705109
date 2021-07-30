@@ -2,12 +2,12 @@ import pytest
 import json
 import jsonpath
 import jmespath
-from face_api_test.api import path_setting
+from api import path_setting
 from face_api_test.api.api_face import Testapi
 from face_api_test.api.base_api import BaseApi
 from face_api_test.database.db_manage import DB
-from face_api_test.testcase.ids_list import get_ids
-from face_api_test.testcase.process import Process
+from testcase.ids_list import get_ids
+from testcase.process import Process
 
 
 
@@ -83,7 +83,7 @@ class Test_api:
         print('在线的面诊时是',Statuslist)
 
         userid = jsonpath.jsonpath(r,"$..user_id.") #拿到接口里所有的userid
-        sql = "SELECT good_at FROM consultation_counsellor WHERE user_id IN {}".format(tuple(userid))
+        sql = "SELECT good_at FROM consultation_counsellor WHERE user_id IN {}".format(tuple())
         a = DB().query_db(sql)
         print("999999",a[0]["good_at"])
 
@@ -104,7 +104,6 @@ class Test_api:
             print('老用户')
         elif a['counsellor_type'] == None:
             print('传参错误')
-
 
     #面诊师表单获取上一次信息接口
     @pytest.mark.parametrize('param',orders_consultation_apply_form_info_data, ids=orders_consultation_apply_form_info_case)
